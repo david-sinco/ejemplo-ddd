@@ -11,7 +11,7 @@
 #region Designer generated code
 #pragma warning disable
 using Reqnroll;
-namespace Finanzas.Domain.Spec.Features
+namespace Finanzas.Test.Features
 {
     
     
@@ -118,21 +118,23 @@ namespace Finanzas.Domain.Spec.Features
         
         private static global::Reqnroll.Formatters.RuntimeSupport.FeatureLevelCucumberMessages InitializeCucumberMessages()
         {
-            return new global::Reqnroll.Formatters.RuntimeSupport.FeatureLevelCucumberMessages("Features/TransactionCore.feature.ndjson", 6);
+            return new global::Reqnroll.Formatters.RuntimeSupport.FeatureLevelCucumberMessages("Features/TransactionCore.feature.ndjson", 9);
         }
         
-        [global::Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute("Registro de un ingreso de dinero")]
-        [global::Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Registro de un ingreso de dinero")]
+        [global::Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute("Registro de un ingreso de dinero exitoso")]
+        [global::Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Registro de un ingreso de dinero exitoso")]
         [global::Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Registro de Movimientos")]
-        public async global::System.Threading.Tasks.Task RegistroDeUnIngresoDeDinero()
+        [global::Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Unitary")]
+        public async global::System.Threading.Tasks.Task RegistroDeUnIngresoDeDineroExitoso()
         {
-            string[] tagsOfScenario = ((string[])(null));
+            string[] tagsOfScenario = new string[] {
+                    "Unitary"};
             global::System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new global::System.Collections.Specialized.OrderedDictionary();
             string pickleIndex = "0";
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Registro de un ingreso de dinero", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Registro de un ingreso de dinero exitoso", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
             string[] tagsOfRule = ((string[])(null));
             global::Reqnroll.RuleInfo ruleInfo = null;
-#line 5
+#line 6
   this.ScenarioInitialize(scenarioInfo, ruleInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -142,14 +144,53 @@ namespace Finanzas.Domain.Spec.Features
             else
             {
                 await this.ScenarioStartAsync();
-#line 6
-    await testRunner.GivenAsync("una cuenta llamada \"Sueldo\" con saldo de 0 \"USD\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
-#line hidden
 #line 7
-    await testRunner.WhenAsync("registro un ingreso de 2000 \"USD\" por \"Pago de N�mina\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+    await testRunner.GivenAsync("una cuenta llamada \"Efectivo\" con saldo de 0 \"USD\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
 #line hidden
 #line 8
-    await testRunner.ThenAsync("el saldo de la cuenta \"Sueldo\" debe ser 2000 \"USD\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+    await testRunner.WhenAsync("registro un ingreso de 2000 \"USD\" por \"Pago de N�mina\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+#line hidden
+#line 9
+    await testRunner.ThenAsync("el saldo de la cuenta \"Efectivo\" debe ser 2000 \"USD\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+#line hidden
+            }
+            await this.ScenarioCleanupAsync();
+        }
+        
+        [global::Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute("Impedir el registro de movimientos con monto cero o negativo")]
+        [global::Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Impedir el registro de movimientos con monto cero o negativo")]
+        [global::Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Registro de Movimientos")]
+        [global::Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Unitary")]
+        [global::Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Validation")]
+        public async global::System.Threading.Tasks.Task ImpedirElRegistroDeMovimientosConMontoCeroONegativo()
+        {
+            string[] tagsOfScenario = new string[] {
+                    "Unitary",
+                    "Validation"};
+            global::System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new global::System.Collections.Specialized.OrderedDictionary();
+            string pickleIndex = "1";
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Impedir el registro de movimientos con monto cero o negativo", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
+            string[] tagsOfRule = ((string[])(null));
+            global::Reqnroll.RuleInfo ruleInfo = null;
+#line 12
+  this.ScenarioInitialize(scenarioInfo, ruleInfo);
+#line hidden
+            if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                await testRunner.SkipScenarioAsync();
+            }
+            else
+            {
+                await this.ScenarioStartAsync();
+#line 13
+    await testRunner.GivenAsync("una cuenta llamada \"Efectivo\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
+#line hidden
+#line 14
+    await testRunner.WhenAsync("intento registrar un ingreso de 0 \"USD\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+#line hidden
+#line 15
+    await testRunner.ThenAsync("el sistema debe rechazar la operaci�n con el mensaje \"El monto del movimiento deb" +
+                        "e ser mayor a cero\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();
@@ -158,15 +199,17 @@ namespace Finanzas.Domain.Spec.Features
         [global::Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute("Registro de un egreso simple")]
         [global::Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Registro de un egreso simple")]
         [global::Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Registro de Movimientos")]
+        [global::Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Unitary")]
         public async global::System.Threading.Tasks.Task RegistroDeUnEgresoSimple()
         {
-            string[] tagsOfScenario = ((string[])(null));
+            string[] tagsOfScenario = new string[] {
+                    "Unitary"};
             global::System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new global::System.Collections.Specialized.OrderedDictionary();
-            string pickleIndex = "1";
+            string pickleIndex = "2";
             global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Registro de un egreso simple", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
             string[] tagsOfRule = ((string[])(null));
             global::Reqnroll.RuleInfo ruleInfo = null;
-#line 10
+#line 18
   this.ScenarioInitialize(scenarioInfo, ruleInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -176,14 +219,53 @@ namespace Finanzas.Domain.Spec.Features
             else
             {
                 await this.ScenarioStartAsync();
-#line 11
+#line 19
     await testRunner.GivenAsync("una cuenta llamada \"Billetera\" con saldo de 100 \"USD\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
 #line hidden
-#line 12
+#line 20
     await testRunner.WhenAsync("registro un egreso de 20 \"USD\" en la categor�a \"Alimentaci�n\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
-#line 13
+#line 21
     await testRunner.ThenAsync("el saldo de la cuenta \"Billetera\" debe ser 80 \"USD\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+#line hidden
+            }
+            await this.ScenarioCleanupAsync();
+        }
+        
+        [global::Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute("Impedir egresos que superen el saldo disponible")]
+        [global::Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Impedir egresos que superen el saldo disponible")]
+        [global::Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Registro de Movimientos")]
+        [global::Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Unitary")]
+        [global::Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Validation")]
+        public async global::System.Threading.Tasks.Task ImpedirEgresosQueSuperenElSaldoDisponible()
+        {
+            string[] tagsOfScenario = new string[] {
+                    "Unitary",
+                    "Validation"};
+            global::System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new global::System.Collections.Specialized.OrderedDictionary();
+            string pickleIndex = "3";
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Impedir egresos que superen el saldo disponible", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
+            string[] tagsOfRule = ((string[])(null));
+            global::Reqnroll.RuleInfo ruleInfo = null;
+#line 24
+  this.ScenarioInitialize(scenarioInfo, ruleInfo);
+#line hidden
+            if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                await testRunner.SkipScenarioAsync();
+            }
+            else
+            {
+                await this.ScenarioStartAsync();
+#line 25
+    await testRunner.GivenAsync("una cuenta llamada \"Billetera\" con saldo de 50 \"USD\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
+#line hidden
+#line 26
+    await testRunner.WhenAsync("intento registrar un egreso de 60 \"USD\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+#line hidden
+#line 27
+    await testRunner.ThenAsync("el sistema debe rechazar la operaci�n con el mensaje \"Saldo insuficiente para rea" +
+                        "lizar el movimiento\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();
@@ -192,15 +274,17 @@ namespace Finanzas.Domain.Spec.Features
         [global::Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute("Transferencia entre cuentas propias")]
         [global::Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Transferencia entre cuentas propias")]
         [global::Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Registro de Movimientos")]
+        [global::Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Unitary")]
         public async global::System.Threading.Tasks.Task TransferenciaEntreCuentasPropias()
         {
-            string[] tagsOfScenario = ((string[])(null));
+            string[] tagsOfScenario = new string[] {
+                    "Unitary"};
             global::System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new global::System.Collections.Specialized.OrderedDictionary();
-            string pickleIndex = "2";
+            string pickleIndex = "4";
             global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Transferencia entre cuentas propias", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
             string[] tagsOfRule = ((string[])(null));
             global::Reqnroll.RuleInfo ruleInfo = null;
-#line 15
+#line 30
   this.ScenarioInitialize(scenarioInfo, ruleInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -210,37 +294,41 @@ namespace Finanzas.Domain.Spec.Features
             else
             {
                 await this.ScenarioStartAsync();
-#line 16
+#line 31
     await testRunner.GivenAsync("una cuenta \"Ahorros\" con 1000 \"USD\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
 #line hidden
-#line 17
+#line 32
     await testRunner.AndAsync("una cuenta \"Efectivo\" con 50 \"USD\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-#line 18
+#line 33
     await testRunner.WhenAsync("transfiero 200 \"USD\" desde \"Ahorros\" hacia \"Efectivo\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
-#line 19
+#line 34
     await testRunner.ThenAsync("el saldo de \"Ahorros\" debe ser 800 \"USD\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
-#line 20
+#line 35
     await testRunner.AndAsync("el saldo de \"Efectivo\" debe ser 250 \"USD\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();
         }
         
-        [global::Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute("Anulaci�n de una transacci�n err�nea")]
-        [global::Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Anulaci�n de una transacci�n err�nea")]
+        [global::Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute("Impedir transferencias si la cuenta origen no tiene fondos suficientes")]
+        [global::Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Impedir transferencias si la cuenta origen no tiene fondos suficientes")]
         [global::Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Registro de Movimientos")]
-        public async global::System.Threading.Tasks.Task AnulaciNDeUnaTransacciNErrNea()
+        [global::Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Unitary")]
+        [global::Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Validation")]
+        public async global::System.Threading.Tasks.Task ImpedirTransferenciasSiLaCuentaOrigenNoTieneFondosSuficientes()
         {
-            string[] tagsOfScenario = ((string[])(null));
+            string[] tagsOfScenario = new string[] {
+                    "Unitary",
+                    "Validation"};
             global::System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new global::System.Collections.Specialized.OrderedDictionary();
-            string pickleIndex = "3";
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Anulaci�n de una transacci�n err�nea", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
+            string pickleIndex = "5";
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Impedir transferencias si la cuenta origen no tiene fondos suficientes", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
             string[] tagsOfRule = ((string[])(null));
             global::Reqnroll.RuleInfo ruleInfo = null;
-#line 22
+#line 38
   this.ScenarioInitialize(scenarioInfo, ruleInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -250,17 +338,60 @@ namespace Finanzas.Domain.Spec.Features
             else
             {
                 await this.ScenarioStartAsync();
-#line 23
+#line 39
+    await testRunner.GivenAsync("una cuenta \"Ahorros\" con 100 \"USD\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
+#line hidden
+#line 40
+    await testRunner.AndAsync("una cuenta \"Efectivo\" con 0 \"USD\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+#line hidden
+#line 41
+    await testRunner.WhenAsync("intento transferir 150 \"USD\" desde \"Ahorros\" hacia \"Efectivo\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+#line hidden
+#line 42
+    await testRunner.ThenAsync("el sistema debe rechazar la operaci�n con el mensaje \"Saldo insuficiente para rea" +
+                        "lizar la transferencia\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+#line hidden
+            }
+            await this.ScenarioCleanupAsync();
+        }
+        
+        [global::Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute("Eliminar un movimiento existente")]
+        [global::Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Eliminar un movimiento existente")]
+        [global::Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Registro de Movimientos")]
+        [global::Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Unitary")]
+        public async global::System.Threading.Tasks.Task EliminarUnMovimientoExistente()
+        {
+            string[] tagsOfScenario = new string[] {
+                    "Unitary"};
+            global::System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new global::System.Collections.Specialized.OrderedDictionary();
+            string pickleIndex = "6";
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Eliminar un movimiento existente", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
+            string[] tagsOfRule = ((string[])(null));
+            global::Reqnroll.RuleInfo ruleInfo = null;
+#line 45
+  this.ScenarioInitialize(scenarioInfo, ruleInfo);
+#line hidden
+            if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                await testRunner.SkipScenarioAsync();
+            }
+            else
+            {
+                await this.ScenarioStartAsync();
+#line 46
     await testRunner.GivenAsync("una cuenta \"Banco\" con saldo de 500 \"USD\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
 #line hidden
-#line 24
-    await testRunner.AndAsync("una transacci�n de egreso previa de 50 \"USD\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+#line 47
+    await testRunner.AndAsync("un movimiento de egreso registrado por 50 \"USD\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-#line 25
-    await testRunner.WhenAsync("anulo la transacci�n de 50 \"USD\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+#line 48
+    await testRunner.WhenAsync("elimino el movimiento de 50 \"USD\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
-#line 26
-    await testRunner.ThenAsync("el saldo de la cuenta \"Banco\" debe ser 550 \"USD\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+#line 49
+    await testRunner.ThenAsync("el movimiento ya no debe existir en el historial", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+#line hidden
+#line 50
+    await testRunner.AndAsync("el saldo de la cuenta \"Banco\" debe ser 550 \"USD\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();

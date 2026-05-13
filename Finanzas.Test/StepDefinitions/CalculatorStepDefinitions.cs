@@ -1,4 +1,4 @@
-namespace Finanzas.Domain.Spec.StepDefinitions
+namespace Finanzas.Test.StepDefinitions
 {
     [Binding]
     public sealed class CalculatorStepDefinitions

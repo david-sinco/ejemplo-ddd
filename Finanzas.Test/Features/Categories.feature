@@ -1,20 +1,20 @@
-Feature: Gestión de Categorías
+Feature: Gestion Categorias
   Como usuario quiero administrar las etiquetas de mis movimientos
-  Para clasificar mis gastos mediante nombres únicos y colores permitidos
+  Para clasificar mis gastos mediante nombres unicos y colores permitidos
 
   Background:
     Given la paleta de colores permitida es: "Verde, Gris, Negro, Azul, Rojo"
 
   @Unitary
-  Scenario: Crear una categoría con nombre válido
-    When creo una categoría con los siguientes datos:
+  Scenario: Crear una categoria con nombre valido
+    When creo una categoria con los siguientes datos:
       | Name         | Color | Icon      |
       | Comida       | Verde | fast-food |
-    Then la categoría "Comida" debe estar disponible para su uso
+    Then la categoria "Comida" debe estar disponible para su uso
 
   @Unitary
   Scenario: Impedir nombres demasiado cortos
-    When intento crear una categoría con el nombre "Yo"
+    When intento crear una categoria con el nombre "Yo"
     Then el sistema debe rechazar la creación con el mensaje "El nombre debe tener al menos 3 caracteres"
 
   @Unitary

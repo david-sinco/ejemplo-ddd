@@ -11,14 +11,14 @@
 #region Designer generated code
 #pragma warning disable
 using Reqnroll;
-namespace Finanzas.Domain.Spec.Features
+namespace Finanzas.Test.Features
 {
     
     
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Reqnroll", "3.0.0.0")]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [global::Microsoft.VisualStudio.TestTools.UnitTesting.TestClassAttribute()]
-    public partial class ControlDePresupuestosFeature
+    public partial class ConsultasEInformesFeature
     {
         
         private global::Reqnroll.ITestRunner testRunner;
@@ -27,10 +27,10 @@ namespace Finanzas.Domain.Spec.Features
         
         private static string[] featureTags = ((string[])(null));
         
-        private static global::Reqnroll.FeatureInfo featureInfo = new global::Reqnroll.FeatureInfo(new global::System.Globalization.CultureInfo("en-US"), "Features", "Control de Presupuestos", "  Como usuario quiero establecer l�mites de gasto\r\n  Para no gastar m�s de lo que" +
-                " gano", global::Reqnroll.ProgrammingLanguage.CSharp, featureTags, InitializeCucumberMessages());
+        private static global::Reqnroll.FeatureInfo featureInfo = new global::Reqnroll.FeatureInfo(new global::System.Globalization.CultureInfo("en-US"), "Features", "Consultas e Informes", "  Como usuario quiero ver el estado global de mis finanzas\r\n  Para tomar mejores " +
+                "decisiones econ�micas basado en datos reales", global::Reqnroll.ProgrammingLanguage.CSharp, featureTags, InitializeCucumberMessages());
         
-#line 1 "Budgeting.feature"
+#line 1 "Reporting.feature"
 #line hidden
         
         public virtual Microsoft.VisualStudio.TestTools.UnitTesting.TestContext TestContext
@@ -118,52 +118,25 @@ namespace Finanzas.Domain.Spec.Features
         
         private static global::Reqnroll.Formatters.RuntimeSupport.FeatureLevelCucumberMessages InitializeCucumberMessages()
         {
-            return new global::Reqnroll.Formatters.RuntimeSupport.FeatureLevelCucumberMessages("Features/Budgeting.feature.ndjson", 4);
+            return new global::Reqnroll.Formatters.RuntimeSupport.FeatureLevelCucumberMessages("Features/Reporting.feature.ndjson", 3);
         }
         
-        [global::Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute("Establecer un presupuesto mensual")]
-        [global::Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Establecer un presupuesto mensual")]
-        [global::Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Control de Presupuestos")]
-        public async global::System.Threading.Tasks.Task EstablecerUnPresupuestoMensual()
+        [global::Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute("Visualizar resumen de gastos por categor�a basado en splits")]
+        [global::Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Visualizar resumen de gastos por categor�a basado en splits")]
+        [global::Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Consultas e Informes")]
+        [global::Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Reporting")]
+        [global::Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("ReadOnly")]
+        public async global::System.Threading.Tasks.Task VisualizarResumenDeGastosPorCategorABasadoEnSplits()
         {
-            string[] tagsOfScenario = ((string[])(null));
+            string[] tagsOfScenario = new string[] {
+                    "Reporting",
+                    "ReadOnly"};
             global::System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new global::System.Collections.Specialized.OrderedDictionary();
             string pickleIndex = "0";
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Establecer un presupuesto mensual", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Visualizar resumen de gastos por categor�a basado en splits", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
             string[] tagsOfRule = ((string[])(null));
             global::Reqnroll.RuleInfo ruleInfo = null;
-#line 5
-  this.ScenarioInitialize(scenarioInfo, ruleInfo);
-#line hidden
-            if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
-            {
-                await testRunner.SkipScenarioAsync();
-            }
-            else
-            {
-                await this.ScenarioStartAsync();
 #line 6
-    await testRunner.WhenAsync("defino un presupuesto de 400 \"USD\" para la categor�a \"Ocio\" en \"Mayo 2026\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
-#line hidden
-#line 7
-    await testRunner.ThenAsync("el presupuesto de \"Ocio\" debe estar activo para el periodo actual", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
-#line hidden
-            }
-            await this.ScenarioCleanupAsync();
-        }
-        
-        [global::Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute("Alerta por exceso de presupuesto")]
-        [global::Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Alerta por exceso de presupuesto")]
-        [global::Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Control de Presupuestos")]
-        public async global::System.Threading.Tasks.Task AlertaPorExcesoDePresupuesto()
-        {
-            string[] tagsOfScenario = ((string[])(null));
-            global::System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new global::System.Collections.Specialized.OrderedDictionary();
-            string pickleIndex = "1";
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Alerta por exceso de presupuesto", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
-            string[] tagsOfRule = ((string[])(null));
-            global::Reqnroll.RuleInfo ruleInfo = null;
-#line 9
   this.ScenarioInitialize(scenarioInfo, ruleInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -173,17 +146,71 @@ namespace Finanzas.Domain.Spec.Features
             else
             {
                 await this.ScenarioStartAsync();
-#line 10
-    await testRunner.GivenAsync("un presupuesto de 100 \"USD\" para \"Restaurantes\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
+                global::Reqnroll.Table table3 = new global::Reqnroll.Table(new string[] {
+                            "Nombre",
+                            "Saldo Inicial",
+                            "Moneda"});
+                table3.AddRow(new string[] {
+                            "Banco",
+                            "1500",
+                            "USD"});
+                table3.AddRow(new string[] {
+                            "Efectivo",
+                            "500",
+                            "USD"});
+#line 7
+    await testRunner.GivenAsync("las siguientes cuentas configuradas:", ((string)(null)), table3, "Given ");
 #line hidden
 #line 11
-    await testRunner.AndAsync("un gasto previo de 80 \"USD\" en \"Restaurantes\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+    await testRunner.AndAsync("las siguientes categor�as: \"Comida, Transporte, Limpieza\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
+                global::Reqnroll.Table table4 = new global::Reqnroll.Table(new string[] {
+                            "Descripci�n",
+                            "Cuenta",
+                            "Monto Total"});
+                table4.AddRow(new string[] {
+                            "Supermercado",
+                            "Banco",
+                            "200"});
+                table4.AddRow(new string[] {
+                            "Gasolinera",
+                            "Efectivo",
+                            "50"});
 #line 12
-    await testRunner.WhenAsync("registro un nuevo egreso de 30 \"USD\" en \"Restaurantes\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+    await testRunner.AndAsync("se han registrado los siguientes movimientos:", ((string)(null)), table4, "And ");
 #line hidden
-#line 13
-    await testRunner.ThenAsync("el sistema debe emitir una alerta de exceso de presupuesto", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+                global::Reqnroll.Table table5 = new global::Reqnroll.Table(new string[] {
+                            "Categor�a",
+                            "Monto"});
+                table5.AddRow(new string[] {
+                            "Comida",
+                            "150"});
+                table5.AddRow(new string[] {
+                            "Limpieza",
+                            "50"});
+#line 16
+    await testRunner.AndAsync("el movimiento \"Supermercado\" se distribuy� en:", ((string)(null)), table5, "And ");
+#line hidden
+#line 20
+    await testRunner.WhenAsync("consulto el \"Resumen de Gastos por Categor�a\" del mes actual", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+#line hidden
+                global::Reqnroll.Table table6 = new global::Reqnroll.Table(new string[] {
+                            "Categor�a",
+                            "Total Gastado"});
+                table6.AddRow(new string[] {
+                            "Comida",
+                            "150"});
+                table6.AddRow(new string[] {
+                            "Limpieza",
+                            "50"});
+                table6.AddRow(new string[] {
+                            "Transporte",
+                            "0"});
+#line 21
+    await testRunner.ThenAsync("el reporte debe mostrar los siguientes totales:", ((string)(null)), table6, "Then ");
+#line hidden
+#line 26
+    await testRunner.AndAsync("el Patrimonio Neto total debe ser 1750 \"USD\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();

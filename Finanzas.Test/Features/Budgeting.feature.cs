@@ -11,14 +11,14 @@
 #region Designer generated code
 #pragma warning disable
 using Reqnroll;
-namespace Finanzas.Domain.Spec.Features
+namespace Finanzas.Test.Features
 {
     
     
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Reqnroll", "3.0.0.0")]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [global::Microsoft.VisualStudio.TestTools.UnitTesting.TestClassAttribute()]
-    public partial class DistribuciNDetalladaSplitsFeature
+    public partial class ControlDePresupuestosFeature
     {
         
         private global::Reqnroll.ITestRunner testRunner;
@@ -27,10 +27,10 @@ namespace Finanzas.Domain.Spec.Features
         
         private static string[] featureTags = ((string[])(null));
         
-        private static global::Reqnroll.FeatureInfo featureInfo = new global::Reqnroll.FeatureInfo(new global::System.Globalization.CultureInfo("en-US"), "Features", "Distribuci�n Detallada (Splits)", "  Como usuario quiero desglosar un movimiento en varias categor�as\r\n  Para saber " +
-                "exactamente en qu� gasto mi dinero", global::Reqnroll.ProgrammingLanguage.CSharp, featureTags, InitializeCucumberMessages());
+        private static global::Reqnroll.FeatureInfo featureInfo = new global::Reqnroll.FeatureInfo(new global::System.Globalization.CultureInfo("en-US"), "Features", "Control de Presupuestos", "  CORREGIR ESTE FEATURE POR QUE ESTA MAL LA ESPECIFICACION\r\n  Como usuario quiero" +
+                " establecer l�mites de gasto\r\n  Para no gastar m�s de lo que gano", global::Reqnroll.ProgrammingLanguage.CSharp, featureTags, InitializeCucumberMessages());
         
-#line 1 "TransactionSplits.feature"
+#line 1 "Budgeting.feature"
 #line hidden
         
         public virtual Microsoft.VisualStudio.TestTools.UnitTesting.TestContext TestContext
@@ -118,21 +118,21 @@ namespace Finanzas.Domain.Spec.Features
         
         private static global::Reqnroll.Formatters.RuntimeSupport.FeatureLevelCucumberMessages InitializeCucumberMessages()
         {
-            return new global::Reqnroll.Formatters.RuntimeSupport.FeatureLevelCucumberMessages("Features/TransactionSplits.feature.ndjson", 5);
+            return new global::Reqnroll.Formatters.RuntimeSupport.FeatureLevelCucumberMessages("Features/Budgeting.feature.ndjson", 4);
         }
         
-        [global::Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute("Gasto multi-categor�a en una sola compra")]
-        [global::Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Gasto multi-categor�a en una sola compra")]
-        [global::Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Distribuci�n Detallada (Splits)")]
-        public async global::System.Threading.Tasks.Task GastoMulti_CategorAEnUnaSolaCompra()
+        [global::Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute("Establecer un presupuesto mensual")]
+        [global::Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Establecer un presupuesto mensual")]
+        [global::Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Control de Presupuestos")]
+        public async global::System.Threading.Tasks.Task EstablecerUnPresupuestoMensual()
         {
             string[] tagsOfScenario = ((string[])(null));
             global::System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new global::System.Collections.Specialized.OrderedDictionary();
             string pickleIndex = "0";
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Gasto multi-categor�a en una sola compra", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Establecer un presupuesto mensual", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
             string[] tagsOfRule = ((string[])(null));
             global::Reqnroll.RuleInfo ruleInfo = null;
-#line 5
+#line 6
   this.ScenarioInitialize(scenarioInfo, ruleInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -142,46 +142,28 @@ namespace Finanzas.Domain.Spec.Features
             else
             {
                 await this.ScenarioStartAsync();
-#line 6
-    await testRunner.GivenAsync("una cuenta \"Tarjeta\" con 500 \"USD\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
-#line hidden
 #line 7
-    await testRunner.WhenAsync("registro un movimiento de 100 \"USD\" llamado \"Supermercado\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+    await testRunner.WhenAsync("defino un presupuesto de 400 \"USD\" para la categor�a \"Ocio\" en \"Mayo 2026\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
-                global::Reqnroll.Table table1 = new global::Reqnroll.Table(new string[] {
-                            "Categor�a",
-                            "Monto"});
-                table1.AddRow(new string[] {
-                            "Alimentos",
-                            "70"});
-                table1.AddRow(new string[] {
-                            "Limpieza",
-                            "30"});
 #line 8
-    await testRunner.AndAsync("distribuyo el gasto en los siguientes splits:", ((string)(null)), table1, "And ");
-#line hidden
-#line 12
-    await testRunner.ThenAsync("el saldo de \"Tarjeta\" debe ser 400 \"USD\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
-#line hidden
-#line 13
-    await testRunner.AndAsync("el movimiento debe tener 2 distribuciones registradas", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+    await testRunner.ThenAsync("el presupuesto de \"Ocio\" debe estar activo para el periodo actual", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();
         }
         
-        [global::Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute("Error al intentar distribuir un monto diferente al total")]
-        [global::Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Error al intentar distribuir un monto diferente al total")]
-        [global::Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Distribuci�n Detallada (Splits)")]
-        public async global::System.Threading.Tasks.Task ErrorAlIntentarDistribuirUnMontoDiferenteAlTotal()
+        [global::Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute("Alerta por exceso de presupuesto")]
+        [global::Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Alerta por exceso de presupuesto")]
+        [global::Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Control de Presupuestos")]
+        public async global::System.Threading.Tasks.Task AlertaPorExcesoDePresupuesto()
         {
             string[] tagsOfScenario = ((string[])(null));
             global::System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new global::System.Collections.Specialized.OrderedDictionary();
             string pickleIndex = "1";
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Error al intentar distribuir un monto diferente al total", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Alerta por exceso de presupuesto", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
             string[] tagsOfRule = ((string[])(null));
             global::Reqnroll.RuleInfo ruleInfo = null;
-#line 15
+#line 10
   this.ScenarioInitialize(scenarioInfo, ruleInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -191,57 +173,17 @@ namespace Finanzas.Domain.Spec.Features
             else
             {
                 await this.ScenarioStartAsync();
-#line 16
-    await testRunner.GivenAsync("un movimiento de 100 \"USD\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
+#line 11
+    await testRunner.GivenAsync("un presupuesto de 100 \"USD\" para \"Restaurantes\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
 #line hidden
-                global::Reqnroll.Table table2 = new global::Reqnroll.Table(new string[] {
-                            "Categor�a",
-                            "Monto"});
-                table2.AddRow(new string[] {
-                            "Alimentos",
-                            "50"});
-                table2.AddRow(new string[] {
-                            "Limpieza",
-                            "40"});
-#line 17
-    await testRunner.WhenAsync("intento distribuir el gasto en:", ((string)(null)), table2, "When ");
+#line 12
+    await testRunner.AndAsync("un gasto previo de 80 \"USD\" en \"Restaurantes\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-#line 21
-    await testRunner.ThenAsync("el sistema debe rechazar la distribuci�n por integridad de montos", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+#line 13
+    await testRunner.WhenAsync("registro un nuevo egreso de 30 \"USD\" en \"Restaurantes\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
-            }
-            await this.ScenarioCleanupAsync();
-        }
-        
-        [global::Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute("Categorizaci�n parcial de un movimiento")]
-        [global::Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Categorizaci�n parcial de un movimiento")]
-        [global::Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Distribuci�n Detallada (Splits)")]
-        public async global::System.Threading.Tasks.Task CategorizaciNParcialDeUnMovimiento()
-        {
-            string[] tagsOfScenario = ((string[])(null));
-            global::System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new global::System.Collections.Specialized.OrderedDictionary();
-            string pickleIndex = "2";
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Categorizaci�n parcial de un movimiento", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
-            string[] tagsOfRule = ((string[])(null));
-            global::Reqnroll.RuleInfo ruleInfo = null;
-#line 23
-  this.ScenarioInitialize(scenarioInfo, ruleInfo);
-#line hidden
-            if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
-            {
-                await testRunner.SkipScenarioAsync();
-            }
-            else
-            {
-                await this.ScenarioStartAsync();
-#line 24
-    await testRunner.WhenAsync("registro un movimiento de 100 \"USD\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
-#line hidden
-#line 25
-    await testRunner.AndAsync("solo asigno 60 \"USD\" a la categor�a \"Salud\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
-#line hidden
-#line 26
-    await testRunner.ThenAsync("el sistema debe marcar 40 \"USD\" como \"Sin categor�a\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+#line 14
+    await testRunner.ThenAsync("el sistema debe emitir una alerta de exceso de presupuesto", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();
