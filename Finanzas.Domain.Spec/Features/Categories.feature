@@ -1,12 +1,35 @@
-Feature: Clasificación y Organización
-  Como usuario quiero organizar mis tipos de gasto
-  Para tener reportes limpios
+Feature: Gestión de Categorías
+  Como usuario quiero administrar las etiquetas de mis movimientos
+  Para clasificar mis gastos mediante nombres únicos y colores permitidos
 
-  Scenario: Crear jerarquía de categorías
-    Given una categoría padre llamada "Transporte"
-    When creo una sub-categoría llamada "Gasolina" bajo "Transporte"
-    Then la categoría "Gasolina" debe pertenecer a "Transporte"
+  Background:
+    Given la paleta de colores permitida es: "Verde, Gris, Negro, Azul, Rojo"
 
-  Scenario: Personalizar categoría para la interfaz
-    When asigno el icono "car-front" y el color "blue" a la categoría "Transporte"
-    Then la categoría "Transporte" debe guardar sus metadatos visuales
+  @Unitary
+  Scenario: Crear una categoría con nombre válido
+    When creo una categoría con los siguientes datos:
+      | Name         | Color | Icon      |
+      | Comida       | Verde | fast-food |
+    Then la categoría "Comida" debe estar disponible para su uso
+
+  @Unitary
+  Scenario: Impedir nombres demasiado cortos
+    When intento crear una categoría con el nombre "Yo"
+    Then el sistema debe rechazar la creación con el mensaje "El nombre debe tener al menos 3 caracteres"
+
+  @Unitary
+  Scenario: Impedir colores no permitidos por la paleta
+    When intento crear una categoría con el color "Amarillo"
+    Then el sistema debe rechazar la creación con el mensaje "El color no pertenece a la paleta permitida"
+
+  @Integration
+  Scenario: Impedir nombres duplicados en el sistema
+    Given que ya existe una categoría llamada "Transporte"
+    When intento crear una categoría con el nombre "Transporte"
+    Then el sistema debe rechazar la creación con el mensaje "Ya existe una categoría con ese nombre"
+
+  @Unitary
+  Scenario: Actualizar metadatos de una categoría
+    Given una categoría existente llamada "Salud"
+    When cambio su color a "Azul"
+    Then la categoría "Salud" debe tener el color "Azul"

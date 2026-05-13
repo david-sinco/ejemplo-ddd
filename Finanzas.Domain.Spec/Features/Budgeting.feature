@@ -1,4 +1,5 @@
 Feature: Control de Presupuestos
+  CORREGIR ESTE FEATURE POR QUE ESTA MAL LA ESPECIFICACION
   Como usuario quiero establecer límites de gasto
   Para no gastar más de lo que gano
 
