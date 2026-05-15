@@ -1,0 +1,24 @@
+services:
+  finanzas.api:
+    image: ${DOCKER_REGISTRY-}finanzasapi
+    build:
+      context: .
+      dockerfile: Finanzas.API/Dockerfile
+    ports:
+      - "5088:8080"
+      - "7259:8081"
+    depends_on:
+      - db
+
+  db:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=+s0iGx:+}bFE9pwk?kCp
+    ports:
+      - "1433:1433"
+    volumes:
+      - sql_data:/var/opt/mssql
+
+volumes:
+  sql_data:

@@ -127,23 +127,63 @@ namespace Finanzas.Test.Features
         
         private static global::Reqnroll.Formatters.RuntimeSupport.FeatureLevelCucumberMessages InitializeCucumberMessages()
         {
-            return new global::Reqnroll.Formatters.RuntimeSupport.FeatureLevelCucumberMessages("Features/Categories.feature.ndjson", 7);
+            return new global::Reqnroll.Formatters.RuntimeSupport.FeatureLevelCucumberMessages("Features/Categories.feature.ndjson", 8);
         }
         
         [global::Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute("Crear una categoría con nombre valido")]
         [global::Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Crear una categoría con nombre valido")]
         [global::Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Gestión Categorias")]
-        [global::Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Unitary")]
         public async global::System.Threading.Tasks.Task CrearUnaCategoriaConNombreValido()
         {
-            string[] tagsOfScenario = new string[] {
-                    "Unitary"};
+            string[] tagsOfScenario = ((string[])(null));
             global::System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new global::System.Collections.Specialized.OrderedDictionary();
             string pickleIndex = "0";
             global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Crear una categoría con nombre valido", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
             string[] tagsOfRule = ((string[])(null));
             global::Reqnroll.RuleInfo ruleInfo = null;
+#line 9
+  this.ScenarioInitialize(scenarioInfo, ruleInfo);
+#line hidden
+            if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                await testRunner.SkipScenarioAsync();
+            }
+            else
+            {
+                await this.ScenarioStartAsync();
+#line 6
+  await this.FeatureBackgroundAsync();
+#line hidden
+                global::Reqnroll.Table table1 = new global::Reqnroll.Table(new string[] {
+                            "Name",
+                            "Color",
+                            "Icon"});
+                table1.AddRow(new string[] {
+                            "Comida",
+                            "Verde",
+                            "fast-food"});
 #line 10
+    await testRunner.WhenAsync("creo una categoría con los siguientes datos:", ((string)(null)), table1, "Cuando ");
+#line hidden
+#line 13
+    await testRunner.ThenAsync("la categoría \"Comida\" debe estar disponible para su uso", ((string)(null)), ((global::Reqnroll.Table)(null)), "Entonces ");
+#line hidden
+            }
+            await this.ScenarioCleanupAsync();
+        }
+        
+        [global::Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute("Impedir nombres demasiado cortos")]
+        [global::Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Impedir nombres demasiado cortos")]
+        [global::Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Gestión Categorias")]
+        public async global::System.Threading.Tasks.Task ImpedirNombresDemasiadoCortos()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            global::System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new global::System.Collections.Specialized.OrderedDictionary();
+            string pickleIndex = "1";
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Impedir nombres demasiado cortos", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
+            string[] tagsOfRule = ((string[])(null));
+            global::Reqnroll.RuleInfo ruleInfo = null;
+#line 15
   this.ScenarioInitialize(scenarioInfo, ruleInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -161,33 +201,32 @@ namespace Finanzas.Test.Features
                             "Color",
                             "Icon"});
                 table2.AddRow(new string[] {
-                            "Comida",
+                            "Yo",
                             "Verde",
                             "fast-food"});
-#line 11
+#line 16
     await testRunner.WhenAsync("creo una categoría con los siguientes datos:", ((string)(null)), table2, "Cuando ");
 #line hidden
-#line 14
-    await testRunner.ThenAsync("la categoría \"Comida\" debe estar disponible para su uso", ((string)(null)), ((global::Reqnroll.Table)(null)), "Entonces ");
+#line 19
+    await testRunner.ThenAsync("el sistema debe rechazar la creación con el mensaje \"El nombre debe tener al meno" +
+                        "s 3 caracteres\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Entonces ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();
         }
         
-        [global::Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute("Impedir nombres demasiado cortos")]
-        [global::Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Impedir nombres demasiado cortos")]
+        [global::Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute("Impedir colores no permitidos por la paleta")]
+        [global::Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Impedir colores no permitidos por la paleta")]
         [global::Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Gestión Categorias")]
-        [global::Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Unitary")]
-        public async global::System.Threading.Tasks.Task ImpedirNombresDemasiadoCortos()
+        public async global::System.Threading.Tasks.Task ImpedirColoresNoPermitidosPorLaPaleta()
         {
-            string[] tagsOfScenario = new string[] {
-                    "Unitary"};
+            string[] tagsOfScenario = ((string[])(null));
             global::System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new global::System.Collections.Specialized.OrderedDictionary();
-            string pickleIndex = "1";
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Impedir nombres demasiado cortos", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
+            string pickleIndex = "2";
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Impedir colores no permitidos por la paleta", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
             string[] tagsOfRule = ((string[])(null));
             global::Reqnroll.RuleInfo ruleInfo = null;
-#line 17
+#line 21
   this.ScenarioInitialize(scenarioInfo, ruleInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -205,34 +244,32 @@ namespace Finanzas.Test.Features
                             "Color",
                             "Icon"});
                 table3.AddRow(new string[] {
-                            "Yo",
-                            "Verde",
+                            "Comida",
+                            "Amarillo",
                             "fast-food"});
-#line 18
+#line 22
     await testRunner.WhenAsync("creo una categoría con los siguientes datos:", ((string)(null)), table3, "Cuando ");
 #line hidden
-#line 21
-    await testRunner.ThenAsync("el sistema debe rechazar la creación con el mensaje \"El nombre debe tener al meno" +
-                        "s 3 caracteres\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Entonces ");
+#line 25
+    await testRunner.ThenAsync("el sistema debe rechazar la creación con el mensaje \"El color no pertenece a la p" +
+                        "aleta permitida\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Entonces ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();
         }
         
-        [global::Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute("Impedir colores no permitidos por la paleta")]
-        [global::Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Impedir colores no permitidos por la paleta")]
+        [global::Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute("Impedir nombres duplicados en el sistema")]
+        [global::Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Impedir nombres duplicados en el sistema")]
         [global::Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Gestión Categorias")]
-        [global::Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Unitary")]
-        public async global::System.Threading.Tasks.Task ImpedirColoresNoPermitidosPorLaPaleta()
+        public async global::System.Threading.Tasks.Task ImpedirNombresDuplicadosEnElSistema()
         {
-            string[] tagsOfScenario = new string[] {
-                    "Unitary"};
+            string[] tagsOfScenario = ((string[])(null));
             global::System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new global::System.Collections.Specialized.OrderedDictionary();
-            string pickleIndex = "2";
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Impedir colores no permitidos por la paleta", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
+            string pickleIndex = "3";
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Impedir nombres duplicados en el sistema", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
             string[] tagsOfRule = ((string[])(null));
             global::Reqnroll.RuleInfo ruleInfo = null;
-#line 24
+#line 27
   this.ScenarioInitialize(scenarioInfo, ruleInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -250,45 +287,11 @@ namespace Finanzas.Test.Features
                             "Color",
                             "Icon"});
                 table4.AddRow(new string[] {
-                            "Comida",
-                            "Amarillo",
+                            "Trasporte",
+                            "Verde",
                             "fast-food"});
-#line 25
-    await testRunner.WhenAsync("creo una categoría con los siguientes datos:", ((string)(null)), table4, "Cuando ");
-#line hidden
 #line 28
-    await testRunner.ThenAsync("el sistema debe rechazar la creación con el mensaje \"El color no pertenece a la p" +
-                        "aleta permitida\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Entonces ");
-#line hidden
-            }
-            await this.ScenarioCleanupAsync();
-        }
-        
-        [global::Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute("Impedir nombres duplicados en el sistema")]
-        [global::Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Impedir nombres duplicados en el sistema")]
-        [global::Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Gestión Categorias")]
-        [global::Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Integration")]
-        public async global::System.Threading.Tasks.Task ImpedirNombresDuplicadosEnElSistema()
-        {
-            string[] tagsOfScenario = new string[] {
-                    "Integration"};
-            global::System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new global::System.Collections.Specialized.OrderedDictionary();
-            string pickleIndex = "3";
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Impedir nombres duplicados en el sistema", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
-            string[] tagsOfRule = ((string[])(null));
-            global::Reqnroll.RuleInfo ruleInfo = null;
-#line 31
-  this.ScenarioInitialize(scenarioInfo, ruleInfo);
-#line hidden
-            if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
-            {
-                await testRunner.SkipScenarioAsync();
-            }
-            else
-            {
-                await this.ScenarioStartAsync();
-#line 6
-  await this.FeatureBackgroundAsync();
+    await testRunner.GivenAsync("que ya existe una categoría con los siguientes datos:", ((string)(null)), table4, "Dado ");
 #line hidden
                 global::Reqnroll.Table table5 = new global::Reqnroll.Table(new string[] {
                             "Name",
@@ -296,23 +299,12 @@ namespace Finanzas.Test.Features
                             "Icon"});
                 table5.AddRow(new string[] {
                             "Trasporte",
-                            "Verde",
-                            "fast-food"});
-#line 32
-    await testRunner.GivenAsync("que ya existe una categoría con los siguientes datos:", ((string)(null)), table5, "Dado ");
-#line hidden
-                global::Reqnroll.Table table6 = new global::Reqnroll.Table(new string[] {
-                            "Name",
-                            "Color",
-                            "Icon"});
-                table6.AddRow(new string[] {
-                            "Trasporte",
                             "Gris",
                             "fast-food"});
-#line 35
-    await testRunner.WhenAsync("creo una categoría con los siguientes datos:", ((string)(null)), table6, "Cuando ");
+#line 31
+    await testRunner.WhenAsync("creo una categoría con los siguientes datos:", ((string)(null)), table5, "Cuando ");
 #line hidden
-#line 38
+#line 34
     await testRunner.ThenAsync("el sistema debe rechazar la creación con el mensaje \"Ya existe una categoría con " +
                         "ese nombre\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Entonces ");
 #line hidden
@@ -323,17 +315,15 @@ namespace Finanzas.Test.Features
         [global::Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute("Actualizar datos de una categoría")]
         [global::Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Actualizar datos de una categoría")]
         [global::Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Gestión Categorias")]
-        [global::Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Unitary")]
         public async global::System.Threading.Tasks.Task ActualizarDatosDeUnaCategoria()
         {
-            string[] tagsOfScenario = new string[] {
-                    "Unitary"};
+            string[] tagsOfScenario = ((string[])(null));
             global::System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new global::System.Collections.Specialized.OrderedDictionary();
             string pickleIndex = "4";
             global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Actualizar datos de una categoría", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
             string[] tagsOfRule = ((string[])(null));
             global::Reqnroll.RuleInfo ruleInfo = null;
-#line 41
+#line 36
   this.ScenarioInitialize(scenarioInfo, ruleInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -346,30 +336,73 @@ namespace Finanzas.Test.Features
 #line 6
   await this.FeatureBackgroundAsync();
 #line hidden
+                global::Reqnroll.Table table6 = new global::Reqnroll.Table(new string[] {
+                            "Name",
+                            "Color",
+                            "Icon"});
+                table6.AddRow(new string[] {
+                            "Salud",
+                            "Verde",
+                            "fast-food"});
+#line 37
+    await testRunner.GivenAsync("que ya existe una categoría con los siguientes datos:", ((string)(null)), table6, "Dado ");
+#line hidden
                 global::Reqnroll.Table table7 = new global::Reqnroll.Table(new string[] {
                             "Name",
                             "Color",
                             "Icon"});
                 table7.AddRow(new string[] {
                             "Salud",
-                            "Verde",
-                            "fast-food"});
-#line 42
-    await testRunner.GivenAsync("que ya existe una categoría con los siguientes datos:", ((string)(null)), table7, "Dado ");
-#line hidden
-                global::Reqnroll.Table table8 = new global::Reqnroll.Table(new string[] {
-                            "Name",
-                            "Color",
-                            "Icon"});
-                table8.AddRow(new string[] {
-                            "Salud",
                             "Azul",
                             "fast-food"});
-#line 45
-    await testRunner.WhenAsync("actualizo la categoría con los siguientes datos:", ((string)(null)), table8, "Cuando ");
+#line 40
+    await testRunner.WhenAsync("actualizo la categoría con los siguientes datos:", ((string)(null)), table7, "Cuando ");
 #line hidden
-#line 48
+#line 43
     await testRunner.ThenAsync("la categoría \"Salud\" debe tener el color \"Azul\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Entonces ");
+#line hidden
+            }
+            await this.ScenarioCleanupAsync();
+        }
+        
+        [global::Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute("La configuración inicial está correcta")]
+        [global::Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("La configuración inicial está correcta")]
+        [global::Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Gestión Categorias")]
+        public async global::System.Threading.Tasks.Task LaConfiguracionInicialEstaCorrecta()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            global::System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new global::System.Collections.Specialized.OrderedDictionary();
+            string pickleIndex = "5";
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("La configuración inicial está correcta", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
+            string[] tagsOfRule = ((string[])(null));
+            global::Reqnroll.RuleInfo ruleInfo = null;
+#line 45
+  this.ScenarioInitialize(scenarioInfo, ruleInfo);
+#line hidden
+            if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                await testRunner.SkipScenarioAsync();
+            }
+            else
+            {
+                await this.ScenarioStartAsync();
+#line 6
+  await this.FeatureBackgroundAsync();
+#line hidden
+                global::Reqnroll.Table table8 = new global::Reqnroll.Table(new string[] {
+                            "Color"});
+                table8.AddRow(new string[] {
+                            "Verde"});
+                table8.AddRow(new string[] {
+                            "Gris"});
+                table8.AddRow(new string[] {
+                            "Negro"});
+                table8.AddRow(new string[] {
+                            "Azul"});
+                table8.AddRow(new string[] {
+                            "Rojo"});
+#line 46
+    await testRunner.ThenAsync("la paleta de colores del sistema debe contener exactamente:", ((string)(null)), table8, "Entonces ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();

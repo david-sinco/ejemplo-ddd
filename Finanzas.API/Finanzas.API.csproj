@@ -6,11 +6,17 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>eb69f6e8-3747-4188-9f2a-f2afa8602d08</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.16" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.22.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Finanzas.Application\Finanzas.Application.csproj" />
+    <ProjectReference Include="..\Finanzas.Infrastructure\Finanzas.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

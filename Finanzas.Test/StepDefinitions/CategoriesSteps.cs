@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using Finanzas.Application.Interfaces;
 using Finanzas.Application.Services;
 using Finanzas.Domain.Aggregates;
@@ -116,5 +117,20 @@ public class CategoriesSteps
         Assert.IsNotNull(category);
         Assert.AreEqual(nombre, category.Name);
         Assert.AreEqual(color, category.Color);
+    }
+
+    [Then(@"la paleta de colores del sistema debe contener exactamente:")]
+    public static void ThenLaPaletaDebeTener(DataTable dataTable)
+    {
+        var coloresEsperados = dataTable.Rows.Select(row => row[0]).ToList();
+        var coloresActuales = CategoryColor.AllowedColors;
+
+        // Validamos con MSTest
+        Assert.AreEqual(coloresEsperados.Count, coloresActuales.Count, "La cantidad de colores permitidos no coincide.");
+
+        foreach (var color in coloresEsperados)
+        {
+            Assert.IsTrue(coloresActuales.Contains(color), $"La paleta no contiene el color esperado: {color}");
+        }
     }
 }

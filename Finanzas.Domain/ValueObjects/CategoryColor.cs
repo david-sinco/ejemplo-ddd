@@ -3,6 +3,9 @@
 public record CategoryColor
 {
     private static string[] _allowedColors = [];
+    public static IReadOnlyCollection<string> AllowedColors => _allowedColors;
+
+
     public static void SetAllowedColors(IEnumerable<string> colors)
     {
         if (_allowedColors.Length > 0) return;

@@ -9,6 +9,9 @@ public class Category
     public CategoryColor Color { get; private set; } = default!;
     public string Icon { get; private set; } = default!;
 
+    // Constructor para EF Core (Shadow constructor)
+    private Category() { }
+
     public Category(string name, string color, string icon)
     {
         Id = Guid.NewGuid();
