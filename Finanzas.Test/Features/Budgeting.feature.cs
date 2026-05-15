@@ -27,7 +27,7 @@ namespace Finanzas.Test.Features
         
         private static string[] featureTags = ((string[])(null));
         
-        private static global::Reqnroll.FeatureInfo featureInfo = new global::Reqnroll.FeatureInfo(new global::System.Globalization.CultureInfo("en-US"), "Features", "Control de Presupuestos", "  CORREGIR ESTE FEATURE POR QUE ESTA MAL LA ESPECIFICACION\r\n  Como usuario quiero" +
+        private static global::Reqnroll.FeatureInfo featureInfo = new global::Reqnroll.FeatureInfo(new global::System.Globalization.CultureInfo("es"), "Features", "Control de Presupuestos", "  CORREGIR ESTE FEATURE POR QUE ESTA MAL LA ESPECIFICACION\r\n  Como usuario quiero" +
                 " establecer l�mites de gasto\r\n  Para no gastar m�s de lo que gano", global::Reqnroll.ProgrammingLanguage.CSharp, featureTags, InitializeCucumberMessages());
         
 #line 1 "Budgeting.feature"
@@ -132,7 +132,7 @@ namespace Finanzas.Test.Features
             global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Establecer un presupuesto mensual", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
             string[] tagsOfRule = ((string[])(null));
             global::Reqnroll.RuleInfo ruleInfo = null;
-#line 6
+#line 7
   this.ScenarioInitialize(scenarioInfo, ruleInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -142,11 +142,11 @@ namespace Finanzas.Test.Features
             else
             {
                 await this.ScenarioStartAsync();
-#line 7
-    await testRunner.WhenAsync("defino un presupuesto de 400 \"USD\" para la categor�a \"Ocio\" en \"Mayo 2026\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
-#line hidden
 #line 8
-    await testRunner.ThenAsync("el presupuesto de \"Ocio\" debe estar activo para el periodo actual", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+    await testRunner.WhenAsync("defino un presupuesto de 400 \"USD\" para la categor�a \"Ocio\" en \"Mayo 2026\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Cuando ");
+#line hidden
+#line 9
+    await testRunner.ThenAsync("el presupuesto de \"Ocio\" debe estar activo para el periodo actual", ((string)(null)), ((global::Reqnroll.Table)(null)), "Entonces ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();
@@ -163,7 +163,7 @@ namespace Finanzas.Test.Features
             global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Alerta por exceso de presupuesto", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
             string[] tagsOfRule = ((string[])(null));
             global::Reqnroll.RuleInfo ruleInfo = null;
-#line 10
+#line 11
   this.ScenarioInitialize(scenarioInfo, ruleInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -173,17 +173,17 @@ namespace Finanzas.Test.Features
             else
             {
                 await this.ScenarioStartAsync();
-#line 11
-    await testRunner.GivenAsync("un presupuesto de 100 \"USD\" para \"Restaurantes\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
-#line hidden
 #line 12
-    await testRunner.AndAsync("un gasto previo de 80 \"USD\" en \"Restaurantes\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+    await testRunner.WhenAsync("un presupuesto de 100 \"USD\" para \"Restaurantes\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Cuando ");
 #line hidden
 #line 13
-    await testRunner.WhenAsync("registro un nuevo egreso de 30 \"USD\" en \"Restaurantes\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+    await testRunner.AndAsync("un gasto previo de 80 \"USD\" en \"Restaurantes\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Y ");
 #line hidden
 #line 14
-    await testRunner.ThenAsync("el sistema debe emitir una alerta de exceso de presupuesto", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+    await testRunner.WhenAsync("registro un nuevo egreso de 30 \"USD\" en \"Restaurantes\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Cuando ");
+#line hidden
+#line 15
+    await testRunner.ThenAsync("el sistema debe emitir una alerta de exceso de presupuesto", ((string)(null)), ((global::Reqnroll.Table)(null)), "Entonces ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();

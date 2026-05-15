@@ -1,14 +1,15 @@
-Feature: Control de Presupuestos
+#language: es
+Requisito: Control de Presupuestos
   CORREGIR ESTE FEATURE POR QUE ESTA MAL LA ESPECIFICACION
   Como usuario quiero establecer límites de gasto
   Para no gastar más de lo que gano
 
-  Scenario: Establecer un presupuesto mensual
-    When defino un presupuesto de 400 "USD" para la categoría "Ocio" en "Mayo 2026"
-    Then el presupuesto de "Ocio" debe estar activo para el periodo actual
+  Escenario: Establecer un presupuesto mensual
+    Cuando defino un presupuesto de 400 "USD" para la categoría "Ocio" en "Mayo 2026"
+    Entonces el presupuesto de "Ocio" debe estar activo para el periodo actual
 
-  Scenario: Alerta por exceso de presupuesto
-    Given un presupuesto de 100 "USD" para "Restaurantes"
-    And un gasto previo de 80 "USD" en "Restaurantes"
-    When registro un nuevo egreso de 30 "USD" en "Restaurantes"
-    Then el sistema debe emitir una alerta de exceso de presupuesto
+  Escenario: Alerta por exceso de presupuesto
+    Cuando un presupuesto de 100 "USD" para "Restaurantes"
+    Y un gasto previo de 80 "USD" en "Restaurantes"
+    Cuando registro un nuevo egreso de 30 "USD" en "Restaurantes"
+    Entonces el sistema debe emitir una alerta de exceso de presupuesto

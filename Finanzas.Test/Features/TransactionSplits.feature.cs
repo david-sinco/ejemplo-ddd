@@ -27,7 +27,7 @@ namespace Finanzas.Test.Features
         
         private static string[] featureTags = ((string[])(null));
         
-        private static global::Reqnroll.FeatureInfo featureInfo = new global::Reqnroll.FeatureInfo(new global::System.Globalization.CultureInfo("en-US"), "Features", "Distribuci�n Detallada (Splits)", "  Como usuario quiero desglosar un movimiento en varias categor�as\r\n  Para saber " +
+        private static global::Reqnroll.FeatureInfo featureInfo = new global::Reqnroll.FeatureInfo(new global::System.Globalization.CultureInfo("es"), "Features", "Distribuci�n Detallada (Splits)", "  Como usuario quiero desglosar un movimiento en varias categor�as\r\n  Para saber " +
                 "exactamente en qu� gasto mi dinero", global::Reqnroll.ProgrammingLanguage.CSharp, featureTags, InitializeCucumberMessages());
         
 #line 1 "TransactionSplits.feature"
@@ -134,7 +134,7 @@ namespace Finanzas.Test.Features
             global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Gasto multi-categor�a exitoso en una sola compra", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
             string[] tagsOfRule = ((string[])(null));
             global::Reqnroll.RuleInfo ruleInfo = null;
-#line 6
+#line 7
   this.ScenarioInitialize(scenarioInfo, ruleInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -144,32 +144,32 @@ namespace Finanzas.Test.Features
             else
             {
                 await this.ScenarioStartAsync();
-#line 7
-    await testRunner.GivenAsync("una cuenta \"Efectivo\" con 500 \"USD\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
-#line hidden
 #line 8
-    await testRunner.WhenAsync("registro un movimiento de 100 \"USD\" llamado \"Supermercado\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+    await testRunner.GivenAsync("una cuenta \"Efectivo\" con 500 \"USD\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Dado ");
 #line hidden
-                global::Reqnroll.Table table7 = new global::Reqnroll.Table(new string[] {
+#line 9
+    await testRunner.WhenAsync("registro un movimiento de 100 \"USD\" llamado \"Supermercado\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Cuando ");
+#line hidden
+                global::Reqnroll.Table table13 = new global::Reqnroll.Table(new string[] {
                             "Categor�a",
                             "Monto"});
-                table7.AddRow(new string[] {
+                table13.AddRow(new string[] {
                             "Alimentos",
                             "70"});
-                table7.AddRow(new string[] {
+                table13.AddRow(new string[] {
                             "Limpieza",
                             "30"});
-#line 9
-    await testRunner.AndAsync("distribuyo el gasto en los siguientes splits:", ((string)(null)), table7, "And ");
-#line hidden
-#line 13
-    await testRunner.ThenAsync("el saldo de \"Efectivo\" debe ser 400 \"USD\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+#line 10
+    await testRunner.AndAsync("distribuyo el gasto en los siguientes splits:", ((string)(null)), table13, "Y ");
 #line hidden
 #line 14
-    await testRunner.AndAsync("el movimiento debe tener 2 distribuciones registradas", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+    await testRunner.ThenAsync("el saldo de \"Efectivo\" debe ser 400 \"USD\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Entonces ");
 #line hidden
 #line 15
-    await testRunner.AndAsync("el monto total de los splits debe ser igual a 100 \"USD\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+    await testRunner.AndAsync("el movimiento debe tener 2 distribuciones registradas", ((string)(null)), ((global::Reqnroll.Table)(null)), "Y ");
+#line hidden
+#line 16
+    await testRunner.AndAsync("el monto total de los splits debe ser igual a 100 \"USD\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Y ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();
@@ -190,7 +190,7 @@ namespace Finanzas.Test.Features
             global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Error al intentar distribuir un monto diferente al total del movimiento", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
             string[] tagsOfRule = ((string[])(null));
             global::Reqnroll.RuleInfo ruleInfo = null;
-#line 18
+#line 19
   this.ScenarioInitialize(scenarioInfo, ruleInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -200,24 +200,24 @@ namespace Finanzas.Test.Features
             else
             {
                 await this.ScenarioStartAsync();
-#line 19
-    await testRunner.GivenAsync("un movimiento de 100 \"USD\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
+#line 20
+    await testRunner.GivenAsync("un movimiento de 100 \"USD\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Dado ");
 #line hidden
-                global::Reqnroll.Table table8 = new global::Reqnroll.Table(new string[] {
+                global::Reqnroll.Table table14 = new global::Reqnroll.Table(new string[] {
                             "Categor�a",
                             "Monto"});
-                table8.AddRow(new string[] {
+                table14.AddRow(new string[] {
                             "Alimentos",
                             "50"});
-                table8.AddRow(new string[] {
+                table14.AddRow(new string[] {
                             "Limpieza",
                             "40"});
-#line 20
-    await testRunner.WhenAsync("intento distribuir el gasto en:", ((string)(null)), table8, "When ");
+#line 21
+    await testRunner.WhenAsync("intento distribuir el gasto en:", ((string)(null)), table14, "Cuando ");
 #line hidden
-#line 24
+#line 25
     await testRunner.ThenAsync("el sistema debe rechazar la operaci�n con el mensaje \"La suma de los splits debe " +
-                        "ser igual al total del movimiento\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+                        "ser igual al total del movimiento\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Entonces ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();
@@ -238,7 +238,7 @@ namespace Finanzas.Test.Features
             global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Impedir splits con montos negativos o cero", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
             string[] tagsOfRule = ((string[])(null));
             global::Reqnroll.RuleInfo ruleInfo = null;
-#line 27
+#line 28
   this.ScenarioInitialize(scenarioInfo, ruleInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -248,24 +248,24 @@ namespace Finanzas.Test.Features
             else
             {
                 await this.ScenarioStartAsync();
-#line 28
-    await testRunner.GivenAsync("un movimiento de 100 \"USD\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
+#line 29
+    await testRunner.GivenAsync("un movimiento de 100 \"USD\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Dado ");
 #line hidden
-                global::Reqnroll.Table table9 = new global::Reqnroll.Table(new string[] {
+                global::Reqnroll.Table table15 = new global::Reqnroll.Table(new string[] {
                             "Categor�a",
                             "Monto"});
-                table9.AddRow(new string[] {
+                table15.AddRow(new string[] {
                             "Alimentos",
                             "-10"});
-                table9.AddRow(new string[] {
+                table15.AddRow(new string[] {
                             "Limpieza",
                             "110"});
-#line 29
-    await testRunner.WhenAsync("intento distribuir el gasto en:", ((string)(null)), table9, "When ");
+#line 30
+    await testRunner.WhenAsync("intento distribuir el gasto en:", ((string)(null)), table15, "Cuando ");
 #line hidden
-#line 33
+#line 34
     await testRunner.ThenAsync("el sistema debe rechazar la operaci�n con el mensaje \"El monto de cada distribuci" +
-                        "�n debe ser mayor a cero\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+                        "�n debe ser mayor a cero\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Entonces ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();
@@ -284,7 +284,7 @@ namespace Finanzas.Test.Features
             global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Categorizaci�n parcial de un movimiento", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
             string[] tagsOfRule = ((string[])(null));
             global::Reqnroll.RuleInfo ruleInfo = null;
-#line 36
+#line 37
   this.ScenarioInitialize(scenarioInfo, ruleInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -294,17 +294,17 @@ namespace Finanzas.Test.Features
             else
             {
                 await this.ScenarioStartAsync();
-#line 37
-    await testRunner.WhenAsync("registro un movimiento de 100 \"USD\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
-#line hidden
 #line 38
-    await testRunner.AndAsync("solo asigno 60 \"USD\" a la categor�a \"Salud\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+    await testRunner.WhenAsync("registro un movimiento de 100 \"USD\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Cuando ");
 #line hidden
 #line 39
-    await testRunner.ThenAsync("el sistema debe asignar autom�ticamente 40 \"USD\" a la categor�a \"Sin Clasificar\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+    await testRunner.AndAsync("solo asigno 60 \"USD\" a la categor�a \"Salud\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Y ");
 #line hidden
 #line 40
-    await testRunner.AndAsync("el movimiento debe estar marcado como \"Distribuci�n Incompleta\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+    await testRunner.ThenAsync("el sistema debe asignar autom�ticamente 40 \"USD\" a la categor�a \"Sin Clasificar\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Entonces ");
+#line hidden
+#line 41
+    await testRunner.AndAsync("el movimiento debe estar marcado como \"Distribuci�n Incompleta\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Y ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();
@@ -325,7 +325,7 @@ namespace Finanzas.Test.Features
             global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Impedir asignar splits a una categor�a inexistente", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
             string[] tagsOfRule = ((string[])(null));
             global::Reqnroll.RuleInfo ruleInfo = null;
-#line 43
+#line 44
   this.ScenarioInitialize(scenarioInfo, ruleInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -335,15 +335,15 @@ namespace Finanzas.Test.Features
             else
             {
                 await this.ScenarioStartAsync();
-#line 44
-    await testRunner.GivenAsync("un movimiento de 100 \"USD\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
-#line hidden
 #line 45
-    await testRunner.WhenAsync("intento asignar 100 \"USD\" a una categor�a que no existe", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+    await testRunner.GivenAsync("un movimiento de 100 \"USD\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Dado ");
 #line hidden
 #line 46
+    await testRunner.WhenAsync("intento asignar 100 \"USD\" a una categor�a que no existe", ((string)(null)), ((global::Reqnroll.Table)(null)), "Cuando ");
+#line hidden
+#line 47
     await testRunner.ThenAsync("el sistema debe rechazar la operaci�n con el mensaje \"La categor�a especificada n" +
-                        "o existe\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+                        "o existe\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Entonces ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();

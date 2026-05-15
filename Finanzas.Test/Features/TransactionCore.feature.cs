@@ -27,7 +27,7 @@ namespace Finanzas.Test.Features
         
         private static string[] featureTags = ((string[])(null));
         
-        private static global::Reqnroll.FeatureInfo featureInfo = new global::Reqnroll.FeatureInfo(new global::System.Globalization.CultureInfo("en-US"), "Features", "Registro de Movimientos", "  Como usuario quiero registrar mis ingresos, egresos y transferencias\r\n  Para ma" +
+        private static global::Reqnroll.FeatureInfo featureInfo = new global::Reqnroll.FeatureInfo(new global::System.Globalization.CultureInfo("es"), "Features", "Registro de Movimientos", "  Como usuario quiero registrar mis ingresos, egresos y transferencias\r\n  Para ma" +
                 "ntener mis saldos actualizados", global::Reqnroll.ProgrammingLanguage.CSharp, featureTags, InitializeCucumberMessages());
         
 #line 1 "TransactionCore.feature"
@@ -134,7 +134,7 @@ namespace Finanzas.Test.Features
             global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Registro de un ingreso de dinero exitoso", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
             string[] tagsOfRule = ((string[])(null));
             global::Reqnroll.RuleInfo ruleInfo = null;
-#line 6
+#line 7
   this.ScenarioInitialize(scenarioInfo, ruleInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -144,14 +144,14 @@ namespace Finanzas.Test.Features
             else
             {
                 await this.ScenarioStartAsync();
-#line 7
-    await testRunner.GivenAsync("una cuenta llamada \"Efectivo\" con saldo de 0 \"USD\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
-#line hidden
 #line 8
-    await testRunner.WhenAsync("registro un ingreso de 2000 \"USD\" por \"Pago de N�mina\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+    await testRunner.GivenAsync("una cuenta llamada \"Efectivo\" con saldo de 0 \"USD\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Dado ");
 #line hidden
 #line 9
-    await testRunner.ThenAsync("el saldo de la cuenta \"Efectivo\" debe ser 2000 \"USD\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+    await testRunner.WhenAsync("registro un ingreso de 2000 \"USD\" por \"Pago de N�mina\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Cuando ");
+#line hidden
+#line 10
+    await testRunner.ThenAsync("el saldo de la cuenta \"Efectivo\" debe ser 2000 \"USD\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Entonces ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();
@@ -172,7 +172,7 @@ namespace Finanzas.Test.Features
             global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Impedir el registro de movimientos con monto cero o negativo", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
             string[] tagsOfRule = ((string[])(null));
             global::Reqnroll.RuleInfo ruleInfo = null;
-#line 12
+#line 13
   this.ScenarioInitialize(scenarioInfo, ruleInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -182,15 +182,15 @@ namespace Finanzas.Test.Features
             else
             {
                 await this.ScenarioStartAsync();
-#line 13
-    await testRunner.GivenAsync("una cuenta llamada \"Efectivo\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
-#line hidden
 #line 14
-    await testRunner.WhenAsync("intento registrar un ingreso de 0 \"USD\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+    await testRunner.GivenAsync("una cuenta llamada \"Efectivo\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Dado ");
 #line hidden
 #line 15
+    await testRunner.WhenAsync("intento registrar un ingreso de 0 \"USD\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Cuando ");
+#line hidden
+#line 16
     await testRunner.ThenAsync("el sistema debe rechazar la operaci�n con el mensaje \"El monto del movimiento deb" +
-                        "e ser mayor a cero\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+                        "e ser mayor a cero\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Entonces ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();
@@ -209,7 +209,7 @@ namespace Finanzas.Test.Features
             global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Registro de un egreso simple", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
             string[] tagsOfRule = ((string[])(null));
             global::Reqnroll.RuleInfo ruleInfo = null;
-#line 18
+#line 19
   this.ScenarioInitialize(scenarioInfo, ruleInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -219,14 +219,14 @@ namespace Finanzas.Test.Features
             else
             {
                 await this.ScenarioStartAsync();
-#line 19
-    await testRunner.GivenAsync("una cuenta llamada \"Billetera\" con saldo de 100 \"USD\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
-#line hidden
 #line 20
-    await testRunner.WhenAsync("registro un egreso de 20 \"USD\" en la categor�a \"Alimentaci�n\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+    await testRunner.GivenAsync("una cuenta llamada \"Billetera\" con saldo de 100 \"USD\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Dado ");
 #line hidden
 #line 21
-    await testRunner.ThenAsync("el saldo de la cuenta \"Billetera\" debe ser 80 \"USD\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+    await testRunner.WhenAsync("registro un egreso de 20 \"USD\" en la categor�a \"Alimentaci�n\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Cuando ");
+#line hidden
+#line 22
+    await testRunner.ThenAsync("el saldo de la cuenta \"Billetera\" debe ser 80 \"USD\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Entonces ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();
@@ -247,7 +247,7 @@ namespace Finanzas.Test.Features
             global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Impedir egresos que superen el saldo disponible", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
             string[] tagsOfRule = ((string[])(null));
             global::Reqnroll.RuleInfo ruleInfo = null;
-#line 24
+#line 25
   this.ScenarioInitialize(scenarioInfo, ruleInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -257,15 +257,15 @@ namespace Finanzas.Test.Features
             else
             {
                 await this.ScenarioStartAsync();
-#line 25
-    await testRunner.GivenAsync("una cuenta llamada \"Billetera\" con saldo de 50 \"USD\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
-#line hidden
 #line 26
-    await testRunner.WhenAsync("intento registrar un egreso de 60 \"USD\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+    await testRunner.GivenAsync("una cuenta llamada \"Billetera\" con saldo de 50 \"USD\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Dado ");
 #line hidden
 #line 27
+    await testRunner.WhenAsync("intento registrar un egreso de 60 \"USD\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Cuando ");
+#line hidden
+#line 28
     await testRunner.ThenAsync("el sistema debe rechazar la operaci�n con el mensaje \"Saldo insuficiente para rea" +
-                        "lizar el movimiento\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+                        "lizar el movimiento\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Entonces ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();
@@ -284,7 +284,7 @@ namespace Finanzas.Test.Features
             global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Transferencia entre cuentas propias", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
             string[] tagsOfRule = ((string[])(null));
             global::Reqnroll.RuleInfo ruleInfo = null;
-#line 30
+#line 31
   this.ScenarioInitialize(scenarioInfo, ruleInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -294,20 +294,20 @@ namespace Finanzas.Test.Features
             else
             {
                 await this.ScenarioStartAsync();
-#line 31
-    await testRunner.GivenAsync("una cuenta \"Ahorros\" con 1000 \"USD\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
-#line hidden
 #line 32
-    await testRunner.AndAsync("una cuenta \"Efectivo\" con 50 \"USD\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+    await testRunner.GivenAsync("una cuenta \"Ahorros\" con 1000 \"USD\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Dado ");
 #line hidden
 #line 33
-    await testRunner.WhenAsync("transfiero 200 \"USD\" desde \"Ahorros\" hacia \"Efectivo\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+    await testRunner.AndAsync("una cuenta \"Efectivo\" con 50 \"USD\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Y ");
 #line hidden
 #line 34
-    await testRunner.ThenAsync("el saldo de \"Ahorros\" debe ser 800 \"USD\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+    await testRunner.WhenAsync("transfiero 200 \"USD\" desde \"Ahorros\" hacia \"Efectivo\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Cuando ");
 #line hidden
 #line 35
-    await testRunner.AndAsync("el saldo de \"Efectivo\" debe ser 250 \"USD\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+    await testRunner.ThenAsync("el saldo de \"Ahorros\" debe ser 800 \"USD\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Entonces ");
+#line hidden
+#line 36
+    await testRunner.AndAsync("el saldo de \"Efectivo\" debe ser 250 \"USD\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Y ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();
@@ -328,7 +328,7 @@ namespace Finanzas.Test.Features
             global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Impedir transferencias si la cuenta origen no tiene fondos suficientes", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
             string[] tagsOfRule = ((string[])(null));
             global::Reqnroll.RuleInfo ruleInfo = null;
-#line 38
+#line 39
   this.ScenarioInitialize(scenarioInfo, ruleInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -338,18 +338,18 @@ namespace Finanzas.Test.Features
             else
             {
                 await this.ScenarioStartAsync();
-#line 39
-    await testRunner.GivenAsync("una cuenta \"Ahorros\" con 100 \"USD\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
-#line hidden
 #line 40
-    await testRunner.AndAsync("una cuenta \"Efectivo\" con 0 \"USD\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+    await testRunner.GivenAsync("una cuenta \"Ahorros\" con 100 \"USD\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Dado ");
 #line hidden
 #line 41
-    await testRunner.WhenAsync("intento transferir 150 \"USD\" desde \"Ahorros\" hacia \"Efectivo\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+    await testRunner.AndAsync("una cuenta \"Efectivo\" con 0 \"USD\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Y ");
 #line hidden
 #line 42
+    await testRunner.WhenAsync("intento transferir 150 \"USD\" desde \"Ahorros\" hacia \"Efectivo\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Cuando ");
+#line hidden
+#line 43
     await testRunner.ThenAsync("el sistema debe rechazar la operaci�n con el mensaje \"Saldo insuficiente para rea" +
-                        "lizar la transferencia\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+                        "lizar la transferencia\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Entonces ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();
@@ -368,7 +368,7 @@ namespace Finanzas.Test.Features
             global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Eliminar un movimiento existente", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
             string[] tagsOfRule = ((string[])(null));
             global::Reqnroll.RuleInfo ruleInfo = null;
-#line 45
+#line 46
   this.ScenarioInitialize(scenarioInfo, ruleInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -378,20 +378,20 @@ namespace Finanzas.Test.Features
             else
             {
                 await this.ScenarioStartAsync();
-#line 46
-    await testRunner.GivenAsync("una cuenta \"Banco\" con saldo de 500 \"USD\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
-#line hidden
 #line 47
-    await testRunner.AndAsync("un movimiento de egreso registrado por 50 \"USD\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+    await testRunner.GivenAsync("una cuenta \"Banco\" con saldo de 500 \"USD\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Dado ");
 #line hidden
 #line 48
-    await testRunner.WhenAsync("elimino el movimiento de 50 \"USD\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+    await testRunner.AndAsync("un movimiento de egreso registrado por 50 \"USD\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Y ");
 #line hidden
 #line 49
-    await testRunner.ThenAsync("el movimiento ya no debe existir en el historial", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+    await testRunner.WhenAsync("elimino el movimiento de 50 \"USD\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Cuando ");
 #line hidden
 #line 50
-    await testRunner.AndAsync("el saldo de la cuenta \"Banco\" debe ser 550 \"USD\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+    await testRunner.ThenAsync("el movimiento ya no debe existir en el historial", ((string)(null)), ((global::Reqnroll.Table)(null)), "Entonces ");
+#line hidden
+#line 51
+    await testRunner.AndAsync("el saldo de la cuenta \"Banco\" debe ser 550 \"USD\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Y ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();
