@@ -11,21 +11,19 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="9.0.16" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.14.1" />
-    <PackageReference Include="Moq" Version="4.20.72" />
+    <PackageReference Include="Reqnroll.Microsoft.Extensions.DependencyInjection" Version="3.3.4" />
     <PackageReference Include="Reqnroll.MsTest" Version="3.3.4" />
     <PackageReference Include="MSTest.TestAdapter" Version="3.10.2" />
     <PackageReference Include="MSTest.TestFramework" Version="3.10.2" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Drivers\" />
-    <Folder Include="Support\" />
+    <PackageReference Include="Testcontainers.MsSql" Version="4.11.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Finanzas.Application\Finanzas.Application.csproj" />
     <ProjectReference Include="..\Finanzas.Domain\Finanzas.Domain.csproj" />
+    <ProjectReference Include="..\Finanzas.Infrastructure\Finanzas.Infrastructure.csproj" />
   </ItemGroup>
 
   <ItemGroup>

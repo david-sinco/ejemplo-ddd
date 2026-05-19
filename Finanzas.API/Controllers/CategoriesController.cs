@@ -16,18 +16,12 @@ public class CategoriesController(ICategoryAppService appService) : ControllerBa
     {
         try
         {
-            var category = await _appService.GetCategoryByNameAsync(name);
-            var response = new CategoryResponse(
-                category.Id,
-                category.Name.Value,
-                category.Color.Value,
-                category.Icon);
-
+            var response = await _appService.GetCategoryByNameAsync(name);
             return Ok(response);
         }
         catch (KeyNotFoundException ex)
         {
-            return NotFound(new { Message = ex.Message });
+            return NotFound(new { ex.Message });
         }
     }
 
@@ -36,16 +30,16 @@ public class CategoriesController(ICategoryAppService appService) : ControllerBa
     {
         try
         {
-            await _appService.CreateCategoryAsync(request.Name, request.Color, request.Icon);
+            await _appService.CreateCategoryAsync(request);
             return CreatedAtAction(nameof(GetByName), new { name = request.Name }, request);
         }
         catch (ArgumentException ex)
         {
-            return BadRequest(new { Message = ex.Message });
+            return BadRequest(new { ex.Message });
         }
         catch (InvalidOperationException ex)
         {
-            return Conflict(new { Message = ex.Message });
+            return Conflict(new { ex.Message });
         }
     }
 
@@ -54,12 +48,12 @@ public class CategoriesController(ICategoryAppService appService) : ControllerBa
     {
         try
         {
-            await _appService.UpdateCategoryAsync(name, request.Color, request.Icon);
+            await _appService.UpdateCategoryAsync(name, request);
             return NoContent();
         }
         catch (Exception ex)
         {
-            return BadRequest(new { Message = ex.Message });
+            return BadRequest(new { ex.Message });
         }
     }
 }

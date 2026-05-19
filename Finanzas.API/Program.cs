@@ -16,7 +16,7 @@ builder.Services.AddInfrastructure(builder.Configuration);
 
 var app = builder.Build();
 
-app.InitializeOptions();
+app.LoadOptions();
 
 //Ejecutar migraciones solo en dev
 if (app.Environment.IsDevelopment())

@@ -1,10 +1,20 @@
 #language: es
+@Categories
 Requisito: Gestión Categorias
   Como usuario quiero administrar las etiquetas de mis movimientos
   Para clasificar mis gastos mediante nombres unicos y colores permitidos
 
   Antecedentes:
     Dado la paleta de colores permitida es: "Verde, Gris, Negro, Azul, Rojo"
+
+  Escenario: La configuración inicial si se guarda
+    Entonces la paleta de colores del sistema debe contener exactamente:
+      | Color  |
+      | Verde  |
+      | Gris   |
+      | Negro  |
+      | Azul   |
+      | Rojo   |
 
   Escenario: Crear una categoría con nombre valido
     Cuando creo una categoría con los siguientes datos:
@@ -41,12 +51,3 @@ Requisito: Gestión Categorias
       | Name     | Color  | Icon      |
       | Salud    | Azul   | fast-food |
     Entonces la categoría "Salud" debe tener el color "Azul"
-
-  Escenario: La configuración inicial está correcta
-    Entonces la paleta de colores del sistema debe contener exactamente:
-      | Color  |
-      | Verde  |
-      | Gris   |
-      | Negro  |
-      | Azul   |
-      | Rojo   |
