@@ -9,10 +9,10 @@ internal class CategoryRepository(ApplicationDbContext context) : ICategoryRepos
 {
     private readonly ApplicationDbContext _context = context;
 
-    public async Task<Category?> GetByNameAsync(string name)
+    public async Task<Category?> GetByNameAndUserAsync(string name, Guid? userId)
     {
         return await _context.Categories
-            .FirstOrDefaultAsync(c => (string)c.Name == name);
+            .FirstOrDefaultAsync(c => (string)c.Name == name && c.UserId == userId);
     }
 
     public async Task AddAsync(Category category)
@@ -27,9 +27,9 @@ internal class CategoryRepository(ApplicationDbContext context) : ICategoryRepos
         await _context.SaveChangesAsync();
     }
 
-    public async Task<bool> ExistsAsync(string name)
+    public async Task<bool> ExistsByNameAndUserAsync(string name, Guid? userId)
     {
         return await _context.Categories
-            .AnyAsync(c => (string)c.Name == name);
+            .AnyAsync(c => (string)c.Name == name && c.UserId == userId);
     }
 }

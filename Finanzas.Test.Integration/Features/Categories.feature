@@ -1,11 +1,16 @@
 #language: es
 @Categories
 Requisito: Gestión Categorias
-  Como usuario quiero administrar las etiquetas de mis movimientos
+  Como usuario autenticado
+  Quiero administrar las etiquetas de mis movimientos
   Para clasificar mis gastos mediante nombres unicos y colores permitidos
 
   Antecedentes:
-    Dado la paleta de colores permitida es: "Verde, Gris, Negro, Azul, Rojo"
+    Dado que existe un usuario con los siguientes datos:
+    | Id                                   | UserName                | Email                   | Password |
+    | 4f9df00a-f180-4d44-bd75-98413e5562d2 | david.gonzalez@sinco.co | david.gonzalez@sinco.co |          |
+    Dado que el usuario "david.gonzalez@sinco.co" con id "4f9df00a-f180-4d44-bd75-98413e5562d2" ha iniciado sesión
+    Y la paleta de colores permitida es: "Verde, Gris, Negro, Azul, Rojo"
 
   Escenario: La configuración inicial si se guarda
     Entonces la paleta de colores del sistema debe contener exactamente:

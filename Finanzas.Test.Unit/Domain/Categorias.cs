@@ -19,7 +19,7 @@ public class Categorias
     {
         await _driver
             .ConPaletaDeColores("Rojo, Azul, Verde")
-            .EjecutarCrearCategoriaAsync("Educación", "Azul", "book-icon");
+            .EjecutarCrearCategoriaAsync(Guid.NewGuid(), "Educación", "Azul", "book-icon");
 
         // Assert
         await _driver.VerificarCategoriaCreadaExitosamenteAsync("Educación");
@@ -32,7 +32,7 @@ public class Categorias
 
         Assert.ThrowsException<DomainException>(() =>
         {
-            new Category(nombreCorto, "Verde", "fast-food");
+            new Category(Guid.NewGuid(), nombreCorto, "Verde", "fast-food");
         });
     }
 }

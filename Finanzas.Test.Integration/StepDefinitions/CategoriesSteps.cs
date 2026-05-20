@@ -1,5 +1,4 @@
-﻿using Reqnroll;
-using Finanzas.Test.Integration.Drivers;
+﻿using Finanzas.Test.Integration.Drivers;
 
 namespace Finanzas.Test.Integration.StepDefinitions;
 

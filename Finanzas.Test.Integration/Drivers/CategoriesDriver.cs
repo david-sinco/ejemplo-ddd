@@ -5,16 +5,21 @@ using Finanzas.Domain.Repositories;
 
 namespace Finanzas.Test.Integration.Drivers;
 
-public class CategoriesDriver(ICategoryRepository repository, ICategoryAppService categoryService)
+public class CategoriesDriver(ICategoryRepository repository, ICategoryAppService categoryService, IUserContext userContext)
 {
     private readonly ICategoryRepository _categoryRepository = repository;
     private readonly ICategoryAppService _categoryService = categoryService;
+    private readonly IUserContext _userContext = userContext;
+
+    private Guid? UserId => _userContext.UserId;
 
     private Exception? _lastException;
 
     public async Task SetupCategoriaExistenteAsync(string nombre, string color, string icono)
     {
-        var category = new Category(nombre, color, icono);
+        if(UserId == null) throw new ArgumentNullException(nameof(UserId));
+
+        var category = new Category(UserId.Value, nombre, color, icono);
         await _categoryRepository.AddAsync(category);
     }
 

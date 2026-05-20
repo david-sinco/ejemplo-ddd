@@ -2,6 +2,9 @@ using Finanzas.API.Extensions;
 using Finanzas.Infrastructure;
 using Finanzas.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
+using Finanzas.Application.Interfaces;
+using Finanzas.API;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,9 +17,16 @@ builder.Services.AddOpenApi();
 builder.Services.AddApplication(builder.Configuration);
 builder.Services.AddInfrastructure(builder.Configuration);
 
-var app = builder.Build();
+builder.Services.AddAuthorization();
 
-app.LoadOptions();
+builder.Services.AddIdentityApiEndpoints<IdentityUser<Guid>>()
+    .AddRoles<IdentityRole<Guid>>()
+    .AddEntityFrameworkStores<ApplicationDbContext>();
+
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddTransient<IUserContext, HttpUserContext>();
+
+var app = builder.Build();
 
 //Ejecutar migraciones solo en dev
 if (app.Environment.IsDevelopment())
@@ -34,6 +44,9 @@ if (app.Environment.IsDevelopment())
     }
 }
 
+app.MapGroup("/session")
+    .MapIdentityApi<IdentityUser<Guid>>();
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
@@ -42,7 +55,10 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
+
+app.LoadOptions();
 
 app.MapControllers();
 

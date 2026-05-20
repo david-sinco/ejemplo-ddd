@@ -25,12 +25,13 @@ namespace Finanzas.Test.Integration.Features
         
         private Microsoft.VisualStudio.TestTools.UnitTesting.TestContext _testContext;
         
-        private static string[] featureTags = ((string[])(null));
+        private static string[] featureTags = new string[] {
+                "Accounts"};
         
-        private static global::Reqnroll.FeatureInfo featureInfo = new global::Reqnroll.FeatureInfo(new global::System.Globalization.CultureInfo("es"), "Features", "Gestion de Cuentas", "  Como usuario quiero administrar mis cuentas f�sicas y l�gicas\r\n  Para tener un " +
-                "reflejo fiel de d�nde est� mi dinero", global::Reqnroll.ProgrammingLanguage.CSharp, featureTags, InitializeCucumberMessages());
+        private static global::Reqnroll.FeatureInfo featureInfo = new global::Reqnroll.FeatureInfo(new global::System.Globalization.CultureInfo("es"), "Features", "Gestion de Cuentas", "  Como usuario autenticado \r\n  Quiero administrar mis cuentas f�sicas y l�gicas\r\n" +
+                "  Para tener un reflejo fiel de d�nde est� mi dinero", global::Reqnroll.ProgrammingLanguage.CSharp, featureTags, InitializeCucumberMessages());
         
-#line 1 "AccountManagement.feature"
+#line 1 "Accounts.feature"
 #line hidden
         
         public virtual Microsoft.VisualStudio.TestTools.UnitTesting.TestContext TestContext
@@ -116,25 +117,47 @@ namespace Finanzas.Test.Integration.Features
             await testRunner.CollectScenarioErrorsAsync();
         }
         
+        public virtual async global::System.Threading.Tasks.Task FeatureBackgroundAsync()
+        {
+#line 8
+  #line hidden
+            global::Reqnroll.Table table1 = new global::Reqnroll.Table(new string[] {
+                        "Id",
+                        "UserName",
+                        "Email",
+                        "Password"});
+            table1.AddRow(new string[] {
+                        "4f9df00a-f180-4d44-bd75-98413e5562d2",
+                        "david.gonzalez@sinco.co",
+                        "david.gonzalez@sinco.co",
+                        ""});
+#line 9
+    await testRunner.GivenAsync("que existe un usuario con los siguientes datos:", ((string)(null)), table1, "Dado ");
+#line hidden
+#line 12
+    await testRunner.GivenAsync("que el usuario \"david.gonzalez@sinco.co\" con id 4f9df00a-f180-4d44-bd75-98413e556" +
+                    "2d2 ha iniciado sesi�n", ((string)(null)), ((global::Reqnroll.Table)(null)), "Dado ");
+#line hidden
+        }
+        
         private static global::Reqnroll.Formatters.RuntimeSupport.FeatureLevelCucumberMessages InitializeCucumberMessages()
         {
-            return new global::Reqnroll.Formatters.RuntimeSupport.FeatureLevelCucumberMessages("Features/AccountManagement.feature.ndjson", 8);
+            return new global::Reqnroll.Formatters.RuntimeSupport.FeatureLevelCucumberMessages("Features/Accounts.feature.ndjson", 8);
         }
         
         [global::Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute("Apertura exitosa de una nueva cuenta")]
         [global::Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Apertura exitosa de una nueva cuenta")]
         [global::Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Gestion de Cuentas")]
-        [global::Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Unitary")]
+        [global::Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Accounts")]
         public async global::System.Threading.Tasks.Task AperturaExitosaDeUnaNuevaCuenta()
         {
-            string[] tagsOfScenario = new string[] {
-                    "Unitary"};
+            string[] tagsOfScenario = ((string[])(null));
             global::System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new global::System.Collections.Specialized.OrderedDictionary();
             string pickleIndex = "0";
             global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Apertura exitosa de una nueva cuenta", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
             string[] tagsOfRule = ((string[])(null));
             global::Reqnroll.RuleInfo ruleInfo = null;
-#line 7
+#line 14
   this.ScenarioInitialize(scenarioInfo, ruleInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -145,29 +168,35 @@ namespace Finanzas.Test.Integration.Features
             {
                 await this.ScenarioStartAsync();
 #line 8
+  await this.FeatureBackgroundAsync();
+#line hidden
+#line 15
     await testRunner.GivenAsync("que no existe una cuenta llamada \"Ahorros\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Dado ");
 #line hidden
-                global::Reqnroll.Table table1 = new global::Reqnroll.Table(new string[] {
+                global::Reqnroll.Table table2 = new global::Reqnroll.Table(new string[] {
                             "Nombre",
                             "Saldo Inicial",
                             "Moneda",
                             "Icono"});
-                table1.AddRow(new string[] {
+                table2.AddRow(new string[] {
                             "Ahorros",
                             "1000",
                             "USD",
                             "university"});
-#line 9
-    await testRunner.WhenAsync("abro una cuenta con los siguientes datos:", ((string)(null)), table1, "Cuando ");
+#line 16
+    await testRunner.WhenAsync("abro una cuenta con los siguientes datos:", ((string)(null)), table2, "Cuando ");
 #line hidden
-#line 12
+#line 19
     await testRunner.ThenAsync("la cuenta \"Ahorros\" debe estar activa", ((string)(null)), ((global::Reqnroll.Table)(null)), "Entonces ");
 #line hidden
-#line 13
+#line 20
     await testRunner.AndAsync("el saldo actual debe ser 1000 \"USD\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Y ");
 #line hidden
-#line 14
+#line 21
     await testRunner.AndAsync("el saldo inicial registrado debe ser 1000 \"USD\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Y ");
+#line hidden
+#line 22
+    await testRunner.AndAsync("el id del usuario debe pertenecer a \"david.gonzalez@sinco.co\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Y ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();
@@ -176,19 +205,16 @@ namespace Finanzas.Test.Integration.Features
         [global::Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute("Impedir la creaci�n de una cuenta con nombre muy corto")]
         [global::Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Impedir la creaci�n de una cuenta con nombre muy corto")]
         [global::Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Gestion de Cuentas")]
-        [global::Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Unitary")]
-        [global::Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Validation")]
+        [global::Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Accounts")]
         public async global::System.Threading.Tasks.Task ImpedirLaCreaciNDeUnaCuentaConNombreMuyCorto()
         {
-            string[] tagsOfScenario = new string[] {
-                    "Unitary",
-                    "Validation"};
+            string[] tagsOfScenario = ((string[])(null));
             global::System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new global::System.Collections.Specialized.OrderedDictionary();
             string pickleIndex = "1";
             global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Impedir la creaci�n de una cuenta con nombre muy corto", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
             string[] tagsOfRule = ((string[])(null));
             global::Reqnroll.RuleInfo ruleInfo = null;
-#line 17
+#line 24
   this.ScenarioInitialize(scenarioInfo, ruleInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -198,10 +224,13 @@ namespace Finanzas.Test.Integration.Features
             else
             {
                 await this.ScenarioStartAsync();
-#line 18
+#line 8
+  await this.FeatureBackgroundAsync();
+#line hidden
+#line 25
     await testRunner.WhenAsync("intento abrir una cuenta con el nombre \"CC\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Cuando ");
 #line hidden
-#line 19
+#line 26
     await testRunner.ThenAsync("el sistema debe rechazar la operaci�n con el mensaje \"El nombre de la cuenta debe" +
                         " tener al menos 3 caracteres\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Entonces ");
 #line hidden
@@ -212,55 +241,13 @@ namespace Finanzas.Test.Integration.Features
         [global::Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute("Impedir nombres de cuenta duplicados")]
         [global::Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Impedir nombres de cuenta duplicados")]
         [global::Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Gestion de Cuentas")]
-        [global::Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Integration")]
-        [global::Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Validation")]
+        [global::Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Accounts")]
         public async global::System.Threading.Tasks.Task ImpedirNombresDeCuentaDuplicados()
         {
-            string[] tagsOfScenario = new string[] {
-                    "Integration",
-                    "Validation"};
+            string[] tagsOfScenario = ((string[])(null));
             global::System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new global::System.Collections.Specialized.OrderedDictionary();
             string pickleIndex = "2";
             global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Impedir nombres de cuenta duplicados", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
-            string[] tagsOfRule = ((string[])(null));
-            global::Reqnroll.RuleInfo ruleInfo = null;
-#line 22
-  this.ScenarioInitialize(scenarioInfo, ruleInfo);
-#line hidden
-            if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
-            {
-                await testRunner.SkipScenarioAsync();
-            }
-            else
-            {
-                await this.ScenarioStartAsync();
-#line 23
-    await testRunner.GivenAsync("que ya existe una cuenta llamada \"Efectivo\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Dado ");
-#line hidden
-#line 24
-    await testRunner.WhenAsync("intento abrir una cuenta con el nombre \"Efectivo\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Cuando ");
-#line hidden
-#line 25
-    await testRunner.ThenAsync("el sistema debe rechazar la operaci�n con el mensaje \"Ya existe una cuenta con el" +
-                        " nombre especificado\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Entonces ");
-#line hidden
-            }
-            await this.ScenarioCleanupAsync();
-        }
-        
-        [global::Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute("No permitir cerrar una cuenta que a�n tiene fondos")]
-        [global::Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("No permitir cerrar una cuenta que a�n tiene fondos")]
-        [global::Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Gestion de Cuentas")]
-        [global::Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Unitary")]
-        [global::Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Validation")]
-        public async global::System.Threading.Tasks.Task NoPermitirCerrarUnaCuentaQueANTieneFondos()
-        {
-            string[] tagsOfScenario = new string[] {
-                    "Unitary",
-                    "Validation"};
-            global::System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new global::System.Collections.Specialized.OrderedDictionary();
-            string pickleIndex = "3";
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("No permitir cerrar una cuenta que a�n tiene fondos", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
             string[] tagsOfRule = ((string[])(null));
             global::Reqnroll.RuleInfo ruleInfo = null;
 #line 28
@@ -273,13 +260,55 @@ namespace Finanzas.Test.Integration.Features
             else
             {
                 await this.ScenarioStartAsync();
+#line 8
+  await this.FeatureBackgroundAsync();
+#line hidden
 #line 29
-    await testRunner.GivenAsync("una cuenta llamada \"N�mina\" con saldo de 150 \"USD\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Dado ");
+    await testRunner.GivenAsync("que ya existe una cuenta llamada \"Efectivo\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Dado ");
 #line hidden
 #line 30
-    await testRunner.WhenAsync("cierro la cuenta \"N�mina\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Cuando ");
+    await testRunner.WhenAsync("intento abrir una cuenta con el nombre \"Efectivo\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Cuando ");
 #line hidden
 #line 31
+    await testRunner.ThenAsync("el sistema debe rechazar la operaci�n con el mensaje \"Ya existe una cuenta con el" +
+                        " nombre especificado\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Entonces ");
+#line hidden
+            }
+            await this.ScenarioCleanupAsync();
+        }
+        
+        [global::Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute("No permitir cerrar una cuenta que a�n tiene fondos")]
+        [global::Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("No permitir cerrar una cuenta que a�n tiene fondos")]
+        [global::Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Gestion de Cuentas")]
+        [global::Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Accounts")]
+        public async global::System.Threading.Tasks.Task NoPermitirCerrarUnaCuentaQueANTieneFondos()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            global::System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new global::System.Collections.Specialized.OrderedDictionary();
+            string pickleIndex = "3";
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("No permitir cerrar una cuenta que a�n tiene fondos", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
+            string[] tagsOfRule = ((string[])(null));
+            global::Reqnroll.RuleInfo ruleInfo = null;
+#line 33
+  this.ScenarioInitialize(scenarioInfo, ruleInfo);
+#line hidden
+            if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                await testRunner.SkipScenarioAsync();
+            }
+            else
+            {
+                await this.ScenarioStartAsync();
+#line 8
+  await this.FeatureBackgroundAsync();
+#line hidden
+#line 34
+    await testRunner.GivenAsync("una cuenta llamada \"N�mina\" con saldo de 150 \"USD\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Dado ");
+#line hidden
+#line 35
+    await testRunner.WhenAsync("cierro la cuenta \"N�mina\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Cuando ");
+#line hidden
+#line 36
     await testRunner.ThenAsync("el sistema debe rechazar la operaci�n con el mensaje \"No se puede cerrar una cuen" +
                         "ta con saldo mayor a cero\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Entonces ");
 #line hidden
@@ -290,17 +319,16 @@ namespace Finanzas.Test.Integration.Features
         [global::Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute("Cierre exitoso de cuenta sin saldo")]
         [global::Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Cierre exitoso de cuenta sin saldo")]
         [global::Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Gestion de Cuentas")]
-        [global::Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Unitary")]
+        [global::Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Accounts")]
         public async global::System.Threading.Tasks.Task CierreExitosoDeCuentaSinSaldo()
         {
-            string[] tagsOfScenario = new string[] {
-                    "Unitary"};
+            string[] tagsOfScenario = ((string[])(null));
             global::System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new global::System.Collections.Specialized.OrderedDictionary();
             string pickleIndex = "4";
             global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Cierre exitoso de cuenta sin saldo", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
             string[] tagsOfRule = ((string[])(null));
             global::Reqnroll.RuleInfo ruleInfo = null;
-#line 34
+#line 38
   this.ScenarioInitialize(scenarioInfo, ruleInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -310,16 +338,19 @@ namespace Finanzas.Test.Integration.Features
             else
             {
                 await this.ScenarioStartAsync();
-#line 35
+#line 8
+  await this.FeatureBackgroundAsync();
+#line hidden
+#line 39
     await testRunner.GivenAsync("una cuenta llamada \"Billetera Vieja\" con saldo de 0 \"USD\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Dado ");
 #line hidden
-#line 36
+#line 40
     await testRunner.WhenAsync("cierro la cuenta \"Billetera Vieja\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Cuando ");
 #line hidden
-#line 37
+#line 41
     await testRunner.ThenAsync("la cuenta \"Billetera Vieja\" debe estar inactiva", ((string)(null)), ((global::Reqnroll.Table)(null)), "Entonces ");
 #line hidden
-#line 38
+#line 42
     await testRunner.AndAsync("el sistema debe rechazar cualquier intento de registrar movimientos con el mensaj" +
                         "e \"La cuenta est� inactiva\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Y ");
 #line hidden
@@ -330,17 +361,16 @@ namespace Finanzas.Test.Integration.Features
         [global::Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute("Ajuste manual de saldo por discrepancia")]
         [global::Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Ajuste manual de saldo por discrepancia")]
         [global::Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Gestion de Cuentas")]
-        [global::Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Unitary")]
+        [global::Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Accounts")]
         public async global::System.Threading.Tasks.Task AjusteManualDeSaldoPorDiscrepancia()
         {
-            string[] tagsOfScenario = new string[] {
-                    "Unitary"};
+            string[] tagsOfScenario = ((string[])(null));
             global::System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new global::System.Collections.Specialized.OrderedDictionary();
             string pickleIndex = "5";
             global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Ajuste manual de saldo por discrepancia", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
             string[] tagsOfRule = ((string[])(null));
             global::Reqnroll.RuleInfo ruleInfo = null;
-#line 41
+#line 44
   this.ScenarioInitialize(scenarioInfo, ruleInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -350,17 +380,20 @@ namespace Finanzas.Test.Integration.Features
             else
             {
                 await this.ScenarioStartAsync();
-#line 42
+#line 8
+  await this.FeatureBackgroundAsync();
+#line hidden
+#line 45
     await testRunner.GivenAsync("una cuenta llamada \"Banco\" con saldo de 500 \"USD\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Dado ");
 #line hidden
-#line 43
+#line 46
     await testRunner.WhenAsync("ajusto el saldo de la cuenta \"Banco\" a 480 \"USD\" por motivo \"Gasto no registrado\"" +
                         "", ((string)(null)), ((global::Reqnroll.Table)(null)), "Cuando ");
 #line hidden
-#line 44
+#line 47
     await testRunner.ThenAsync("el saldo actual de la cuenta \"Banco\" debe ser 480 \"USD\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Entonces ");
 #line hidden
-#line 45
+#line 48
     await testRunner.AndAsync("debe existir un registro de ajuste en los movimientos por \"20 USD\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Y ");
 #line hidden
             }

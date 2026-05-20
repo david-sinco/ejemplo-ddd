@@ -13,7 +13,7 @@ public record CategoryColor
     }
 
 
-    public string Value { get; }
+    public string Value { get; init; }
 
     public CategoryColor(string value)
     {

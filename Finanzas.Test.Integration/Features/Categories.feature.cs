@@ -28,8 +28,8 @@ namespace Finanzas.Test.Integration.Features
         private static string[] featureTags = new string[] {
                 "Categories"};
         
-        private static global::Reqnroll.FeatureInfo featureInfo = new global::Reqnroll.FeatureInfo(new global::System.Globalization.CultureInfo("es"), "Features", "Gestión Categorias", "  Como usuario quiero administrar las etiquetas de mis movimientos\r\n  Para clasif" +
-                "icar mis gastos mediante nombres unicos y colores permitidos", global::Reqnroll.ProgrammingLanguage.CSharp, featureTags, InitializeCucumberMessages());
+        private static global::Reqnroll.FeatureInfo featureInfo = new global::Reqnroll.FeatureInfo(new global::System.Globalization.CultureInfo("es"), "Features", "Gestión Categorias", "  Como usuario autenticado\r\n  Quiero administrar las etiquetas de mis movimientos" +
+                "\r\n  Para clasificar mis gastos mediante nombres unicos y colores permitidos", global::Reqnroll.ProgrammingLanguage.CSharp, featureTags, InitializeCucumberMessages());
         
 #line 1 "Categories.feature"
 #line hidden
@@ -119,10 +119,27 @@ namespace Finanzas.Test.Integration.Features
         
         public virtual async global::System.Threading.Tasks.Task FeatureBackgroundAsync()
         {
-#line 7
-  #line hidden
 #line 8
-    await testRunner.GivenAsync("la paleta de colores permitida es: \"Verde, Gris, Negro, Azul, Rojo\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Dado ");
+  #line hidden
+            global::Reqnroll.Table table1 = new global::Reqnroll.Table(new string[] {
+                        "Id",
+                        "UserName",
+                        "Email",
+                        "Password"});
+            table1.AddRow(new string[] {
+                        "4f9df00a-f180-4d44-bd75-98413e5562d2",
+                        "david.gonzalez@sinco.co",
+                        "david.gonzalez@sinco.co",
+                        ""});
+#line 9
+    await testRunner.GivenAsync("que existe un usuario con los siguientes datos:", ((string)(null)), table1, "Dado ");
+#line hidden
+#line 12
+    await testRunner.GivenAsync("que el usuario \"david.gonzalez@sinco.co\" con id \"4f9df00a-f180-4d44-bd75-98413e55" +
+                    "62d2\" ha iniciado sesión", ((string)(null)), ((global::Reqnroll.Table)(null)), "Dado ");
+#line hidden
+#line 13
+    await testRunner.AndAsync("la paleta de colores permitida es: \"Verde, Gris, Negro, Azul, Rojo\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Y ");
 #line hidden
         }
         
@@ -143,7 +160,7 @@ namespace Finanzas.Test.Integration.Features
             global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("La configuración inicial si se guarda", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
             string[] tagsOfRule = ((string[])(null));
             global::Reqnroll.RuleInfo ruleInfo = null;
-#line 10
+#line 15
   this.ScenarioInitialize(scenarioInfo, ruleInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -153,7 +170,7 @@ namespace Finanzas.Test.Integration.Features
             else
             {
                 await this.ScenarioStartAsync();
-#line 7
+#line 8
   await this.FeatureBackgroundAsync();
 #line hidden
                 global::Reqnroll.Table table2 = new global::Reqnroll.Table(new string[] {
@@ -168,7 +185,7 @@ namespace Finanzas.Test.Integration.Features
                             "Azul"});
                 table2.AddRow(new string[] {
                             "Rojo"});
-#line 11
+#line 16
     await testRunner.ThenAsync("la paleta de colores del sistema debe contener exactamente:", ((string)(null)), table2, "Entonces ");
 #line hidden
             }
@@ -187,7 +204,7 @@ namespace Finanzas.Test.Integration.Features
             global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Crear una categoría con nombre valido", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
             string[] tagsOfRule = ((string[])(null));
             global::Reqnroll.RuleInfo ruleInfo = null;
-#line 19
+#line 24
   this.ScenarioInitialize(scenarioInfo, ruleInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -197,7 +214,7 @@ namespace Finanzas.Test.Integration.Features
             else
             {
                 await this.ScenarioStartAsync();
-#line 7
+#line 8
   await this.FeatureBackgroundAsync();
 #line hidden
                 global::Reqnroll.Table table3 = new global::Reqnroll.Table(new string[] {
@@ -208,10 +225,10 @@ namespace Finanzas.Test.Integration.Features
                             "Comida",
                             "Verde",
                             "fast-food"});
-#line 20
+#line 25
     await testRunner.WhenAsync("creo una categoría con los siguientes datos:", ((string)(null)), table3, "Cuando ");
 #line hidden
-#line 23
+#line 28
     await testRunner.ThenAsync("la categoría \"Comida\" debe estar disponible para su uso", ((string)(null)), ((global::Reqnroll.Table)(null)), "Entonces ");
 #line hidden
             }
@@ -230,7 +247,7 @@ namespace Finanzas.Test.Integration.Features
             global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Impedir nombres demasiado cortos", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
             string[] tagsOfRule = ((string[])(null));
             global::Reqnroll.RuleInfo ruleInfo = null;
-#line 25
+#line 30
   this.ScenarioInitialize(scenarioInfo, ruleInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -240,7 +257,7 @@ namespace Finanzas.Test.Integration.Features
             else
             {
                 await this.ScenarioStartAsync();
-#line 7
+#line 8
   await this.FeatureBackgroundAsync();
 #line hidden
                 global::Reqnroll.Table table4 = new global::Reqnroll.Table(new string[] {
@@ -251,10 +268,10 @@ namespace Finanzas.Test.Integration.Features
                             "Yo",
                             "Verde",
                             "fast-food"});
-#line 26
+#line 31
     await testRunner.WhenAsync("creo una categoría con los siguientes datos:", ((string)(null)), table4, "Cuando ");
 #line hidden
-#line 29
+#line 34
     await testRunner.ThenAsync("el sistema debe rechazar la creación con el mensaje \"El nombre debe tener al meno" +
                         "s 3 caracteres\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Entonces ");
 #line hidden
@@ -274,7 +291,7 @@ namespace Finanzas.Test.Integration.Features
             global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Impedir colores no permitidos por la paleta", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
             string[] tagsOfRule = ((string[])(null));
             global::Reqnroll.RuleInfo ruleInfo = null;
-#line 31
+#line 36
   this.ScenarioInitialize(scenarioInfo, ruleInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -284,7 +301,7 @@ namespace Finanzas.Test.Integration.Features
             else
             {
                 await this.ScenarioStartAsync();
-#line 7
+#line 8
   await this.FeatureBackgroundAsync();
 #line hidden
                 global::Reqnroll.Table table5 = new global::Reqnroll.Table(new string[] {
@@ -295,10 +312,10 @@ namespace Finanzas.Test.Integration.Features
                             "Comida",
                             "Amarillo",
                             "fast-food"});
-#line 32
+#line 37
     await testRunner.WhenAsync("creo una categoría con los siguientes datos:", ((string)(null)), table5, "Cuando ");
 #line hidden
-#line 35
+#line 40
     await testRunner.ThenAsync("el sistema debe rechazar la creación con el mensaje \"El color no pertenece a la p" +
                         "aleta permitida\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Entonces ");
 #line hidden
@@ -318,7 +335,7 @@ namespace Finanzas.Test.Integration.Features
             global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Impedir nombres duplicados en el sistema", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
             string[] tagsOfRule = ((string[])(null));
             global::Reqnroll.RuleInfo ruleInfo = null;
-#line 37
+#line 42
   this.ScenarioInitialize(scenarioInfo, ruleInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -328,7 +345,7 @@ namespace Finanzas.Test.Integration.Features
             else
             {
                 await this.ScenarioStartAsync();
-#line 7
+#line 8
   await this.FeatureBackgroundAsync();
 #line hidden
                 global::Reqnroll.Table table6 = new global::Reqnroll.Table(new string[] {
@@ -339,7 +356,7 @@ namespace Finanzas.Test.Integration.Features
                             "Trasporte",
                             "Verde",
                             "fast-food"});
-#line 38
+#line 43
     await testRunner.GivenAsync("que ya existe una categoría con los siguientes datos:", ((string)(null)), table6, "Dado ");
 #line hidden
                 global::Reqnroll.Table table7 = new global::Reqnroll.Table(new string[] {
@@ -350,10 +367,10 @@ namespace Finanzas.Test.Integration.Features
                             "Trasporte",
                             "Gris",
                             "fast-food"});
-#line 41
+#line 46
     await testRunner.WhenAsync("creo una categoría con los siguientes datos:", ((string)(null)), table7, "Cuando ");
 #line hidden
-#line 44
+#line 49
     await testRunner.ThenAsync("el sistema debe rechazar la creación con el mensaje \"Ya existe una categoría con " +
                         "ese nombre\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Entonces ");
 #line hidden
@@ -373,7 +390,7 @@ namespace Finanzas.Test.Integration.Features
             global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Actualizar datos de una categoría", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
             string[] tagsOfRule = ((string[])(null));
             global::Reqnroll.RuleInfo ruleInfo = null;
-#line 46
+#line 51
   this.ScenarioInitialize(scenarioInfo, ruleInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -383,7 +400,7 @@ namespace Finanzas.Test.Integration.Features
             else
             {
                 await this.ScenarioStartAsync();
-#line 7
+#line 8
   await this.FeatureBackgroundAsync();
 #line hidden
                 global::Reqnroll.Table table8 = new global::Reqnroll.Table(new string[] {
@@ -394,7 +411,7 @@ namespace Finanzas.Test.Integration.Features
                             "Salud",
                             "Verde",
                             "fast-food"});
-#line 47
+#line 52
     await testRunner.GivenAsync("que ya existe una categoría con los siguientes datos:", ((string)(null)), table8, "Dado ");
 #line hidden
                 global::Reqnroll.Table table9 = new global::Reqnroll.Table(new string[] {
@@ -405,10 +422,10 @@ namespace Finanzas.Test.Integration.Features
                             "Salud",
                             "Azul",
                             "fast-food"});
-#line 50
+#line 55
     await testRunner.WhenAsync("actualizo la categoría con los siguientes datos:", ((string)(null)), table9, "Cuando ");
 #line hidden
-#line 53
+#line 58
     await testRunner.ThenAsync("la categoría \"Salud\" debe tener el color \"Azul\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Entonces ");
 #line hidden
             }

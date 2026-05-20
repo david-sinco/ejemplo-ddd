@@ -5,6 +5,7 @@ namespace Finanzas.Domain.Aggregates;
 public class Category
 {
     public Guid Id { get; private set; }
+    public Guid UserId { get; private set; }
     public CategoryName Name { get; private set; } = default!;
     public CategoryColor Color { get; private set; } = default!;
     public string Icon { get; private set; } = default!;
@@ -12,14 +13,18 @@ public class Category
     // Constructor para EF Core (Shadow constructor)
     private Category() { }
 
-    public Category(string name, string color, string icon)
+    public Category(Guid userId, string name, string color, string icon)
     {
         Id = Guid.NewGuid();
-        Update(name, color, icon);
+        Update(userId, name, color, icon);
     }
 
-    public void Update(string name, string color, string icon)
+    public void Update(Guid userId, string name, string color, string icon)
     {
+        if (userId == Guid.Empty)
+            throw new ArgumentException("El usuario es requerido para crear una categoria");
+
+        UserId = userId;
         Name = new CategoryName(name);
         Color = new CategoryColor(color);
 

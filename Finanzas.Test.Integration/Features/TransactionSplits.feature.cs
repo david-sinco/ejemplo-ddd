@@ -150,17 +150,17 @@ namespace Finanzas.Test.Integration.Features
 #line 9
     await testRunner.WhenAsync("registro un movimiento de 100 \"USD\" llamado \"Supermercado\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Cuando ");
 #line hidden
-                global::Reqnroll.Table table14 = new global::Reqnroll.Table(new string[] {
+                global::Reqnroll.Table table15 = new global::Reqnroll.Table(new string[] {
                             "Categor�a",
                             "Monto"});
-                table14.AddRow(new string[] {
+                table15.AddRow(new string[] {
                             "Alimentos",
                             "70"});
-                table14.AddRow(new string[] {
+                table15.AddRow(new string[] {
                             "Limpieza",
                             "30"});
 #line 10
-    await testRunner.AndAsync("distribuyo el gasto en los siguientes splits:", ((string)(null)), table14, "Y ");
+    await testRunner.AndAsync("distribuyo el gasto en los siguientes splits:", ((string)(null)), table15, "Y ");
 #line hidden
 #line 14
     await testRunner.ThenAsync("el saldo de \"Efectivo\" debe ser 400 \"USD\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Entonces ");
@@ -203,17 +203,17 @@ namespace Finanzas.Test.Integration.Features
 #line 20
     await testRunner.GivenAsync("un movimiento de 100 \"USD\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Dado ");
 #line hidden
-                global::Reqnroll.Table table15 = new global::Reqnroll.Table(new string[] {
+                global::Reqnroll.Table table16 = new global::Reqnroll.Table(new string[] {
                             "Categor�a",
                             "Monto"});
-                table15.AddRow(new string[] {
+                table16.AddRow(new string[] {
                             "Alimentos",
                             "50"});
-                table15.AddRow(new string[] {
+                table16.AddRow(new string[] {
                             "Limpieza",
                             "40"});
 #line 21
-    await testRunner.WhenAsync("intento distribuir el gasto en:", ((string)(null)), table15, "Cuando ");
+    await testRunner.WhenAsync("intento distribuir el gasto en:", ((string)(null)), table16, "Cuando ");
 #line hidden
 #line 25
     await testRunner.ThenAsync("el sistema debe rechazar la operaci�n con el mensaje \"La suma de los splits debe " +
@@ -251,17 +251,17 @@ namespace Finanzas.Test.Integration.Features
 #line 29
     await testRunner.GivenAsync("un movimiento de 100 \"USD\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Dado ");
 #line hidden
-                global::Reqnroll.Table table16 = new global::Reqnroll.Table(new string[] {
+                global::Reqnroll.Table table17 = new global::Reqnroll.Table(new string[] {
                             "Categor�a",
                             "Monto"});
-                table16.AddRow(new string[] {
+                table17.AddRow(new string[] {
                             "Alimentos",
                             "-10"});
-                table16.AddRow(new string[] {
+                table17.AddRow(new string[] {
                             "Limpieza",
                             "110"});
 #line 30
-    await testRunner.WhenAsync("intento distribuir el gasto en:", ((string)(null)), table16, "Cuando ");
+    await testRunner.WhenAsync("intento distribuir el gasto en:", ((string)(null)), table17, "Cuando ");
 #line hidden
 #line 34
     await testRunner.ThenAsync("el sistema debe rechazar la operaci�n con el mensaje \"El monto de cada distribuci" +

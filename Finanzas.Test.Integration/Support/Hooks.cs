@@ -1,4 +1,5 @@
-﻿using Finanzas.Infrastructure;
+﻿using Finanzas.Application.Interfaces;
+using Finanzas.Infrastructure;
 using Finanzas.Infrastructure.Persistence;
 using Finanzas.Test.Integration.Drivers;
 using Microsoft.EntityFrameworkCore;
@@ -46,6 +47,8 @@ public class Hooks
         services.AddApplication(testConfiguration);
 
         services.AddScoped<CategoriesDriver>();
+        services.AddScoped<FakeUserContext>();
+        services.AddScoped<IUserContext>(provider => provider.GetRequiredService<FakeUserContext>());
         return services;
     }
 

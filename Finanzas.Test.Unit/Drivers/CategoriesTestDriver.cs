@@ -1,4 +1,5 @@
 ﻿using Finanzas.Application.Dtos;
+using Finanzas.Application.Interfaces;
 using Finanzas.Application.Services;
 using Finanzas.Domain.Aggregates;
 using Finanzas.Domain.Repositories;
@@ -10,12 +11,13 @@ namespace Finanzas.Test.Unit.Drivers;
 public class CategoriesTestDriver
 {
     private readonly Mock<ICategoryRepository> _repositoryMock = new();
+    private readonly Mock<IUserContext> _userContextMock = new();
     private readonly CategoryAppService _appService;
     private string? _lastErrorMessage;
 
     public CategoriesTestDriver()
     {
-        _appService = new CategoryAppService(_repositoryMock.Object);
+        _appService = new CategoryAppService(_repositoryMock.Object, _userContextMock.Object);
     }
 
     public CategoriesTestDriver ConPaletaDeColores(string colores)
@@ -25,24 +27,25 @@ public class CategoriesTestDriver
         return this;
     }
 
-    public CategoriesTestDriver ConCategoriaExistente(string nombre, string color, string icono)
+    public CategoriesTestDriver ConCategoriaExistente(Guid userId, string nombre, string color, string icono)
     {
-        _repositoryMock.Setup(x => x.GetByNameAsync(nombre))
-                       .ReturnsAsync(new Category(nombre, color, icono));
+        _repositoryMock.Setup(x => x.GetByNameAndUserAsync(nombre, userId))
+                       .ReturnsAsync(new Category(userId, nombre, color, icono));
 
-        _repositoryMock.Setup(x => x.ExistsAsync(nombre))
+        _repositoryMock.Setup(x => x.ExistsByNameAndUserAsync(nombre, userId))
                        .ReturnsAsync(true);
         return this;
     }
 
-    public async Task<CategoriesTestDriver> EjecutarCrearCategoriaAsync(string nombre, string color, string icono)
+    public async Task<CategoriesTestDriver> EjecutarCrearCategoriaAsync(Guid userId, string nombre, string color, string icono)
     {
+        _userContextMock.Setup(x => x.UserId).Returns(userId);
         try
         {
             await _appService.CreateCategoryAsync(new CreateCategoryRequest(nombre, color, icono));
 
-            _repositoryMock.Setup(x => x.GetByNameAsync(nombre))
-                           .ReturnsAsync(new Category(nombre, color, icono));
+            _repositoryMock.Setup(x => x.GetByNameAndUserAsync(nombre, userId))
+                           .ReturnsAsync(new Category(userId, nombre, color, icono));
         }
         catch (Exception ex)
         {
@@ -51,14 +54,15 @@ public class CategoriesTestDriver
         return this;
     }
 
-    public async Task<CategoriesTestDriver> EjecutarActualizarCategoriaAsync(string nombre, string color, string icono)
+    public async Task<CategoriesTestDriver> EjecutarActualizarCategoriaAsync(Guid userId, string nombre, string color, string icono)
     {
+        _userContextMock.Setup(x => x.UserId).Returns(userId);
         try
         {
             await _appService.UpdateCategoryAsync(nombre, new UpdateCategoryRequest(color, icono));
 
-            _repositoryMock.Setup(x => x.GetByNameAsync(nombre))
-                           .ReturnsAsync(new Category(nombre, color, icono));
+            _repositoryMock.Setup(x => x.GetByNameAndUserAsync(nombre, userId))
+                           .ReturnsAsync(new Category(userId, nombre, color, icono));
         }
         catch (Exception ex)
         {
@@ -98,7 +102,7 @@ public class CategoriesTestDriver
         Assert.AreEqual(mensajeEsperado, _lastErrorMessage, "El mensaje de error no coincide.");
     }
 
-    public void VerificarPaletaColores(List<string> coloresEsperados)
+    public static void VerificarPaletaColores(List<string> coloresEsperados)
     {
         var coloresActuales = CategoryColor.AllowedColors;
         Assert.AreEqual(coloresEsperados.Count, coloresActuales.Count);

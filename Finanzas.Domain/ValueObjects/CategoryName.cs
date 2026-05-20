@@ -2,7 +2,7 @@
 
 public record CategoryName
 {
-    public string Value { get; }
+    public string Value { get; init; }
 
     public CategoryName(string value)
     {
