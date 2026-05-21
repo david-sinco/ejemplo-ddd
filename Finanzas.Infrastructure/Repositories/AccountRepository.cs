@@ -9,10 +9,29 @@ internal class AccountRepository(ApplicationDbContext context) : IAccountReposit
 {
     private readonly ApplicationDbContext _context = context;
 
+
+    public async Task<Account?> GetByNameAndUserAsync(string name, Guid? userId)
+    {
+        return await _context.Accounts
+            .FirstOrDefaultAsync(a => a.Name == name && a.UserId == userId);
+    }
+
+    public async Task<bool> ExistsByNameAndUserAsync(string name, Guid? userId)
+    {
+        return await _context.Accounts
+            .AnyAsync(a => a.Name == name && a.UserId == userId);
+    }
+
     public async Task<Account?> GetByIdAndUserAsync(Guid id, Guid? userId)
     {
         return await _context.Accounts
             .FirstOrDefaultAsync(a => a.Id == id && a.UserId == userId);
+    }
+
+    public async Task<bool> ExistsByIdAndUserAsync(Guid id, Guid? userId)
+    {
+        return await _context.Accounts
+            .AnyAsync(a => a.Id == id && a.UserId == userId);
     }
 
     public async Task<Account?> GetByNameAndUserAsync(string name, Guid userId)
@@ -31,11 +50,5 @@ internal class AccountRepository(ApplicationDbContext context) : IAccountReposit
     {
         _context.Accounts.Update(account);
         await _context.SaveChangesAsync();
-    }
-
-    public async Task<bool> ExistsByNameAndUserAsync(string name, Guid? userId)
-    {
-        return await _context.Accounts
-            .AnyAsync(a => a.Name == name && a.UserId == userId);
     }
 }

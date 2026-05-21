@@ -13,6 +13,22 @@ public class AccountAppService(IAccountRepository repository, IUserContext userC
 
     private Guid? UserId => _userContext.UserId;
 
+    public async Task<AccountResponse> GetAccountByNameAndUserId(string name, Guid? userId)
+    {
+        var account = await _repository.GetByNameAndUserAsync(name, UserId)
+            ?? throw new KeyNotFoundException("La cuenta no existe");
+
+        return new AccountResponse(
+            account.Id,
+            account.UserId,
+            account.Name,
+            account.Balance.Amount,
+            account.Balance.Currency,
+            account.Icon,
+            account.IsActive
+        );
+    }
+
     public async Task<AccountResponse> GetAccountByIdAsync(Guid id)
     {
         var account = await _repository.GetByIdAndUserAsync(id, UserId)

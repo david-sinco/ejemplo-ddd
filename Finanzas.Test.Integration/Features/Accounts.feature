@@ -9,7 +9,7 @@ Requisito: Gestion de Cuentas
     Dado que existe un usuario con los siguientes datos:
     | Id                                   | UserName                | Email                   | Password |
     | 4f9df00a-f180-4d44-bd75-98413e5562d2 | david.gonzalez@sinco.co | david.gonzalez@sinco.co |          |
-    Dado que el usuario "david.gonzalez@sinco.co" con id 4f9df00a-f180-4d44-bd75-98413e5562d2 ha iniciado sesión
+    Dado que el usuario "david.gonzalez@sinco.co" con id "4f9df00a-f180-4d44-bd75-98413e5562d2" ha iniciado sesión
 
   Escenario: Apertura exitosa de una nueva cuenta
     Dado que no existe una cuenta llamada "Ahorros"
@@ -17,9 +17,9 @@ Requisito: Gestion de Cuentas
       | Nombre  | Saldo Inicial | Moneda | Icono      |
       | Ahorros |          1000 | USD    | university |
     Entonces la cuenta "Ahorros" debe estar activa
-    Y el saldo actual debe ser 1000 "USD"
-    Y el saldo inicial registrado debe ser 1000 "USD"
-    Y el id del usuario debe pertenecer a "david.gonzalez@sinco.co"
+    Y la cuenta "Ahorros" debe tener un saldo de "1000" "USD"
+    Y la cuenta "Ahorros" debe tener un saldo inicial de "1000" "USD"
+    Y el id del usuario de la cuenta "Ahorros" debe pertenecer a "david.gonzalez@sinco.co"
 
   Escenario: Impedir la creación de una cuenta con nombre muy corto
     Cuando intento abrir una cuenta con el nombre "CC"

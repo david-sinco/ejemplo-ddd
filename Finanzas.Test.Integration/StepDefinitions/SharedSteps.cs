@@ -10,17 +10,17 @@ using Microsoft.AspNetCore.Identity;
 namespace Finanzas.Test.Integration.StepDefinitions;
 
 [Binding]
-public class SharedAuthSteps(FakeUserContext userContext, ApplicationDbContext dbContext)
+public class SharedAuthSteps(FakeUserContext userContext, ApplicationDbContext dbContext, UserManager<IdentityUser<Guid>> userManager)
 {
     private readonly FakeUserContext _userContext = userContext;
     private readonly ApplicationDbContext _dbContext = dbContext;
+    private readonly UserManager<IdentityUser<Guid>> _userManager = userManager;
 
     [Given(@"que existe un usuario con los siguientes datos:")]
     public async Task DadoQueExisteUnUsuarioConLosSiguientesDatos(Table table)
     {
         // Reqnroll lee las filas de la tabla del feature
         var row = table.Rows[0];
-        var userId = Guid.Parse(row["Id"]);
         var username = row["UserName"];
         var email = row["Email"];
 
@@ -28,7 +28,6 @@ public class SharedAuthSteps(FakeUserContext userContext, ApplicationDbContext d
         // O si estás usando el ServiceProvider del escenario actual:
         var user = new IdentityUser<Guid>
         {
-            Id = userId,
             UserName = username,
             Email = email,
             NormalizedUserName = username.ToUpperInvariant(),
@@ -39,9 +38,11 @@ public class SharedAuthSteps(FakeUserContext userContext, ApplicationDbContext d
         await _dbContext.SaveChangesAsync();
     }
 
-    [Given(@"que el usuario ""(.*)"" con id ""(.*)"" ha iniciado sesión")]
-    public void DadoQueElUsuarioHaIniciadoSesion(string username, Guid userId)
+    [Given(@"que el usuario ""(.*)"" ha iniciado sesión")]
+    public async Task DadoQueElUsuarioHaIniciadoSesion(string username)
     {
-        _userContext.UserId = userId;
+        var user = await _userManager.FindByEmailAsync(username);
+        Assert.IsNotNull(user, "El usuario no existe en base de datos");
+        _userContext.UserId = user.Id;
     }
 }

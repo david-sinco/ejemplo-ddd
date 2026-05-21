@@ -135,8 +135,8 @@ namespace Finanzas.Test.Integration.Features
     await testRunner.GivenAsync("que existe un usuario con los siguientes datos:", ((string)(null)), table1, "Dado ");
 #line hidden
 #line 12
-    await testRunner.GivenAsync("que el usuario \"david.gonzalez@sinco.co\" con id 4f9df00a-f180-4d44-bd75-98413e556" +
-                    "2d2 ha iniciado sesi�n", ((string)(null)), ((global::Reqnroll.Table)(null)), "Dado ");
+    await testRunner.GivenAsync("que el usuario \"david.gonzalez@sinco.co\" con id \"4f9df00a-f180-4d44-bd75-98413e55" +
+                    "62d2\" ha iniciado sesi�n", ((string)(null)), ((global::Reqnroll.Table)(null)), "Dado ");
 #line hidden
         }
         
@@ -190,13 +190,14 @@ namespace Finanzas.Test.Integration.Features
     await testRunner.ThenAsync("la cuenta \"Ahorros\" debe estar activa", ((string)(null)), ((global::Reqnroll.Table)(null)), "Entonces ");
 #line hidden
 #line 20
-    await testRunner.AndAsync("el saldo actual debe ser 1000 \"USD\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Y ");
+    await testRunner.AndAsync("la cuenta \"Ahorros\" debe tener un saldo de \"1000\" \"USD\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Y ");
 #line hidden
 #line 21
-    await testRunner.AndAsync("el saldo inicial registrado debe ser 1000 \"USD\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Y ");
+    await testRunner.AndAsync("la cuenta \"Ahorros\" debe tener un saldo inicial de \"1000\" \"USD\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Y ");
 #line hidden
 #line 22
-    await testRunner.AndAsync("el id del usuario debe pertenecer a \"david.gonzalez@sinco.co\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Y ");
+    await testRunner.AndAsync("el id del usuario de la cuenta \"Ahorros\" debe pertenecer a \"david.gonzalez@sinco." +
+                        "co\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Y ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();

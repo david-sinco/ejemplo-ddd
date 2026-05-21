@@ -9,6 +9,7 @@ namespace Finanzas.Application.Interfaces;
 
 public interface IAccountAppService
 {
+    public Task<AccountResponse> GetAccountByNameAndUserId(string name, Guid? userId);
     public Task<AccountResponse> GetAccountByIdAsync(Guid id);
     public Task CreateAccountAsync(CreateAccountRequest request);
     public Task CloseAccountAsync(Guid id);

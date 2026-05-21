@@ -122,12 +122,10 @@ namespace Finanzas.Test.Integration.Features
 #line 8
   #line hidden
             global::Reqnroll.Table table1 = new global::Reqnroll.Table(new string[] {
-                        "Id",
                         "UserName",
                         "Email",
                         "Password"});
             table1.AddRow(new string[] {
-                        "4f9df00a-f180-4d44-bd75-98413e5562d2",
                         "david.gonzalez@sinco.co",
                         "david.gonzalez@sinco.co",
                         ""});
@@ -135,8 +133,7 @@ namespace Finanzas.Test.Integration.Features
     await testRunner.GivenAsync("que existe un usuario con los siguientes datos:", ((string)(null)), table1, "Dado ");
 #line hidden
 #line 12
-    await testRunner.GivenAsync("que el usuario \"david.gonzalez@sinco.co\" con id \"4f9df00a-f180-4d44-bd75-98413e55" +
-                    "62d2\" ha iniciado sesión", ((string)(null)), ((global::Reqnroll.Table)(null)), "Dado ");
+    await testRunner.GivenAsync("que el usuario \"david.gonzalez@sinco.co\" ha iniciado sesión", ((string)(null)), ((global::Reqnroll.Table)(null)), "Dado ");
 #line hidden
 #line 13
     await testRunner.AndAsync("la paleta de colores permitida es: \"Verde, Gris, Negro, Azul, Rojo\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Y ");

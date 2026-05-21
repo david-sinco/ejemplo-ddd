@@ -2,6 +2,7 @@
 using Finanzas.Infrastructure;
 using Finanzas.Infrastructure.Persistence;
 using Finanzas.Test.Integration.Drivers;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -45,6 +46,10 @@ public class Hooks
 
         services.AddInfrastructure(testConfiguration);
         services.AddApplication(testConfiguration);
+
+        services.AddIdentityApiEndpoints<IdentityUser<Guid>>()
+            .AddRoles<IdentityRole<Guid>>()
+            .AddEntityFrameworkStores<ApplicationDbContext>();
 
         services.AddScoped<CategoriesDriver>();
         services.AddScoped<FakeUserContext>();
