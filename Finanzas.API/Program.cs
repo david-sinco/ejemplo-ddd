@@ -1,10 +1,12 @@
+using Finanzas.API;
 using Finanzas.API.Extensions;
+using Finanzas.Application.Interfaces;
 using Finanzas.Infrastructure;
 using Finanzas.Infrastructure.Persistence;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
-using Finanzas.Application.Interfaces;
-using Finanzas.API;
+using Microsoft.EntityFrameworkCore;
+using OpenTelemetry.Metrics;
+using OpenTelemetry.Resources;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +15,16 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
+
+builder.Services.AddOpenTelemetry()
+    .ConfigureResource(resource => resource.AddService("finanzas-api"))
+    .WithMetrics(metrics =>
+    {
+        metrics
+            .AddAspNetCoreInstrumentation() // Métricas nativas de HTTP (peticiones, respuestas, etc.)
+            .AddRuntimeInstrumentation()    // Métricas del CLR (Uso de CPU, memoria, Garbage Collector)
+            .AddPrometheusExporter();       // Expone los datos en formato Prometheus
+    });
 
 builder.Services.AddApplication(builder.Configuration);
 builder.Services.AddInfrastructure(builder.Configuration);
@@ -46,6 +58,7 @@ if (app.Environment.IsDevelopment())
 
 app.MapGroup("/session")
     .MapIdentityApi<IdentityUser<Guid>>();
+app.MapPrometheusScrapingEndpoint();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -53,7 +66,11 @@ if (app.Environment.IsDevelopment())
     app.MapOpenApi();
 }
 
-app.UseHttpsRedirection();
+app.UseWhen(context => !context.Request.Path.StartsWithSegments("/metrics"), appBuilder =>
+{
+    appBuilder.UseHttpsRedirection();
+});
+//app.UseHttpsRedirection();
 
 app.UseAuthentication();
 app.UseAuthorization();

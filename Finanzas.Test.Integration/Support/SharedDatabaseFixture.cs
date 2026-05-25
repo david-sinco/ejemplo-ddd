@@ -11,6 +11,8 @@ public class SharedDatabaseFixture
     {
         Container = new MsSqlBuilder("mcr.microsoft.com/mssql/server:2022-latest")
             .WithPassword("PasswordSeguro123!*")
+            .WithPortBinding("5555", "1433")
+            .WithName("test-container-sql")
             .Build();
 
         await Container.StartAsync();
