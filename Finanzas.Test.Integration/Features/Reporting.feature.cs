@@ -146,68 +146,68 @@ namespace Finanzas.Test.Integration.Features
             else
             {
                 await this.ScenarioStartAsync();
-                global::Reqnroll.Table table11 = new global::Reqnroll.Table(new string[] {
+                global::Reqnroll.Table table12 = new global::Reqnroll.Table(new string[] {
                             "Nombre",
                             "Saldo Inicial",
                             "Moneda"});
-                table11.AddRow(new string[] {
+                table12.AddRow(new string[] {
                             "Banco",
                             "1500",
                             "USD"});
-                table11.AddRow(new string[] {
+                table12.AddRow(new string[] {
                             "Efectivo",
                             "500",
                             "USD"});
 #line 8
-    await testRunner.GivenAsync("las siguientes cuentas configuradas:", ((string)(null)), table11, "Dado ");
+    await testRunner.GivenAsync("las siguientes cuentas configuradas:", ((string)(null)), table12, "Dado ");
 #line hidden
 #line 12
     await testRunner.AndAsync("las siguientes categor�as: \"Comida, Transporte, Limpieza\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Y ");
 #line hidden
-                global::Reqnroll.Table table12 = new global::Reqnroll.Table(new string[] {
+                global::Reqnroll.Table table13 = new global::Reqnroll.Table(new string[] {
                             "Descripci�n",
                             "Cuenta",
                             "Monto Total"});
-                table12.AddRow(new string[] {
+                table13.AddRow(new string[] {
                             "Supermercado",
                             "Banco",
                             "200"});
-                table12.AddRow(new string[] {
+                table13.AddRow(new string[] {
                             "Gasolinera",
                             "Efectivo",
                             "50"});
 #line 13
-    await testRunner.AndAsync("se han registrado los siguientes movimientos:", ((string)(null)), table12, "Y ");
+    await testRunner.AndAsync("se han registrado los siguientes movimientos:", ((string)(null)), table13, "Y ");
 #line hidden
-                global::Reqnroll.Table table13 = new global::Reqnroll.Table(new string[] {
+                global::Reqnroll.Table table14 = new global::Reqnroll.Table(new string[] {
                             "Categor�a",
                             "Monto"});
-                table13.AddRow(new string[] {
+                table14.AddRow(new string[] {
                             "Comida",
                             "150"});
-                table13.AddRow(new string[] {
+                table14.AddRow(new string[] {
                             "Limpieza",
                             "50"});
 #line 17
-    await testRunner.AndAsync("el movimiento \"Supermercado\" se distribuy� en:", ((string)(null)), table13, "Y ");
+    await testRunner.AndAsync("el movimiento \"Supermercado\" se distribuy� en:", ((string)(null)), table14, "Y ");
 #line hidden
 #line 21
     await testRunner.WhenAsync("consulto el \"Resumen de Gastos por Categor�a\" del mes actual", ((string)(null)), ((global::Reqnroll.Table)(null)), "Cuando ");
 #line hidden
-                global::Reqnroll.Table table14 = new global::Reqnroll.Table(new string[] {
+                global::Reqnroll.Table table15 = new global::Reqnroll.Table(new string[] {
                             "Categor�a",
                             "Total Gastado"});
-                table14.AddRow(new string[] {
+                table15.AddRow(new string[] {
                             "Comida",
                             "150"});
-                table14.AddRow(new string[] {
+                table15.AddRow(new string[] {
                             "Limpieza",
                             "50"});
-                table14.AddRow(new string[] {
+                table15.AddRow(new string[] {
                             "Transporte",
                             "0"});
 #line 22
-    await testRunner.ThenAsync("el reporte debe mostrar los siguientes totales:", ((string)(null)), table14, "Entonces ");
+    await testRunner.ThenAsync("el reporte debe mostrar los siguientes totales:", ((string)(null)), table15, "Entonces ");
 #line hidden
 #line 27
     await testRunner.AndAsync("el Patrimonio Neto total debe ser 1750 \"USD\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Y ");

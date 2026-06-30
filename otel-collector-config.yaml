@@ -1,0 +1,64 @@
+receivers:
+  otlp:
+    protocols:
+      grpc:
+        endpoint: 0.0.0.0:4317
+      http:
+        endpoint: 0.0.0.0:4318
+
+processors:
+  batch:
+
+exporters:
+  otlp_http/prometheus:
+    endpoint: "http://prometheus:9090/api/v1/otlp"
+    tls:
+      insecure: true
+
+  otlphttp/loki:
+    endpoint: "http://loki:3100/otlp"
+    tls:
+      insecure: true
+
+  otlp/tempo:
+    endpoint: "tempo:4317"
+    tls:
+      insecure: true
+
+  otlp/aspiredashboard:
+    endpoint: "aspire-dashboard:18889"
+    tls:
+      insecure: true
+
+  azure_blob/cold:
+    url: "http://azurite:10000/devstoreaccount1"
+    container:
+      logs: "otel-logs"
+      metrics: "otel-metrics"
+      traces: "otel-traces"
+    blob_name_format:
+      template_enabled: true
+      logs_format: "year=2006/month=01/day=02/logs_15_04_05.json"
+      metrics_format: "year=2006/month=01/day=02/metrics_15_04_05.json"
+      traces_format: "year=2006/month=01/day=02/traces_15_04_05.json"
+      time_parser_enabled: true
+      serial_num_enabled: true
+    auth:
+      type: "connection_string"
+      connection_string: "DefaultEndpointsProtocol=http;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;BlobEndpoint=http://azurite:10000/devstoreaccount1;"
+    format: json
+
+service:
+  pipelines:
+    metrics:
+      receivers: [otlp]
+      processors: [batch]
+      exporters: [otlp_http/prometheus, otlp/aspiredashboard, azure_blob/cold]
+    logs:
+      receivers: [otlp]
+      processors: [batch]
+      exporters: [otlphttp/loki, otlp/aspiredashboard, azure_blob/cold]
+    traces:
+      receivers: [otlp]
+      processors: [batch]
+      exporters: [otlp/tempo, otlp/aspiredashboard, azure_blob/cold]

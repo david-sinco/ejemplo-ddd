@@ -4,16 +4,19 @@ using Finanzas.Application.Dtos;
 using Finanzas.Application.Interfaces;
 using Finanzas.Domain.Aggregates;
 using Finanzas.Domain.Repositories;
+using Microsoft.Extensions.Logging;
 
-public class CategoryAppService(ICategoryRepository repository, IUserContext userContext) : ICategoryAppService
+public class CategoryAppService(ICategoryRepository repository, IUserContext userContext, ILogger<CategoryAppService> logger) : ICategoryAppService
 {
     private readonly ICategoryRepository _repository = repository;
     private readonly IUserContext _userContext = userContext;
+    private readonly ILogger<CategoryAppService> _logger = logger;
 
     private Guid? UserId => _userContext.UserId;
 
     public async Task<CategoryResponse> GetCategoryByNameAsync(string name)
     {
+        _logger.LogInformation("Requested category with name {name}", name);
         var category = await _repository.GetByNameAndUserAsync(name, UserId) ?? throw new KeyNotFoundException("La categoria no existe");
         return new CategoryResponse(category.Id, category.Name, category.Color, category.Icon);
     }

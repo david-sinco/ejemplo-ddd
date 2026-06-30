@@ -1,9 +1,11 @@
-﻿using Finanzas.Application.Dtos;
+﻿using Castle.Core.Logging;
+using Finanzas.Application.Dtos;
 using Finanzas.Application.Interfaces;
 using Finanzas.Application.Services;
 using Finanzas.Domain.Aggregates;
 using Finanzas.Domain.Repositories;
 using Finanzas.Domain.ValueObjects;
+using Microsoft.Extensions.Logging;
 using Moq;
 
 namespace Finanzas.Test.Unit.Drivers;
@@ -14,10 +16,11 @@ public class CategoriesTestDriver
     private readonly Mock<IUserContext> _userContextMock = new();
     private readonly CategoryAppService _appService;
     private string? _lastErrorMessage;
+    private readonly ILogger<CategoryAppService> _logger;
 
     public CategoriesTestDriver()
     {
-        _appService = new CategoryAppService(_repositoryMock.Object, _userContextMock.Object);
+        _appService = new CategoryAppService(_repositoryMock.Object, _userContextMock.Object, _logger);
     }
 
     public CategoriesTestDriver ConPaletaDeColores(string colores)

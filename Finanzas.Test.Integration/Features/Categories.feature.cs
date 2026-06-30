@@ -121,16 +121,16 @@ namespace Finanzas.Test.Integration.Features
         {
 #line 8
   #line hidden
-            global::Reqnroll.Table table1 = new global::Reqnroll.Table(new string[] {
+            global::Reqnroll.Table table3 = new global::Reqnroll.Table(new string[] {
                         "UserName",
                         "Email",
                         "Password"});
-            table1.AddRow(new string[] {
+            table3.AddRow(new string[] {
                         "david.gonzalez@sinco.co",
                         "david.gonzalez@sinco.co",
                         ""});
 #line 9
-    await testRunner.GivenAsync("que existe un usuario con los siguientes datos:", ((string)(null)), table1, "Dado ");
+    await testRunner.GivenAsync("que existe un usuario con los siguientes datos:", ((string)(null)), table3, "Dado ");
 #line hidden
 #line 12
     await testRunner.GivenAsync("que el usuario \"david.gonzalez@sinco.co\" ha iniciado sesión", ((string)(null)), ((global::Reqnroll.Table)(null)), "Dado ");
@@ -170,20 +170,20 @@ namespace Finanzas.Test.Integration.Features
 #line 8
   await this.FeatureBackgroundAsync();
 #line hidden
-                global::Reqnroll.Table table2 = new global::Reqnroll.Table(new string[] {
+                global::Reqnroll.Table table4 = new global::Reqnroll.Table(new string[] {
                             "Color"});
-                table2.AddRow(new string[] {
+                table4.AddRow(new string[] {
                             "Verde"});
-                table2.AddRow(new string[] {
+                table4.AddRow(new string[] {
                             "Gris"});
-                table2.AddRow(new string[] {
+                table4.AddRow(new string[] {
                             "Negro"});
-                table2.AddRow(new string[] {
+                table4.AddRow(new string[] {
                             "Azul"});
-                table2.AddRow(new string[] {
+                table4.AddRow(new string[] {
                             "Rojo"});
 #line 16
-    await testRunner.ThenAsync("la paleta de colores del sistema debe contener exactamente:", ((string)(null)), table2, "Entonces ");
+    await testRunner.ThenAsync("la paleta de colores del sistema debe contener exactamente:", ((string)(null)), table4, "Entonces ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();
@@ -214,16 +214,16 @@ namespace Finanzas.Test.Integration.Features
 #line 8
   await this.FeatureBackgroundAsync();
 #line hidden
-                global::Reqnroll.Table table3 = new global::Reqnroll.Table(new string[] {
+                global::Reqnroll.Table table5 = new global::Reqnroll.Table(new string[] {
                             "Name",
                             "Color",
                             "Icon"});
-                table3.AddRow(new string[] {
+                table5.AddRow(new string[] {
                             "Comida",
                             "Verde",
                             "fast-food"});
 #line 25
-    await testRunner.WhenAsync("creo una categoría con los siguientes datos:", ((string)(null)), table3, "Cuando ");
+    await testRunner.WhenAsync("creo una categoría con los siguientes datos:", ((string)(null)), table5, "Cuando ");
 #line hidden
 #line 28
     await testRunner.ThenAsync("la categoría \"Comida\" debe estar disponible para su uso", ((string)(null)), ((global::Reqnroll.Table)(null)), "Entonces ");
@@ -257,16 +257,16 @@ namespace Finanzas.Test.Integration.Features
 #line 8
   await this.FeatureBackgroundAsync();
 #line hidden
-                global::Reqnroll.Table table4 = new global::Reqnroll.Table(new string[] {
+                global::Reqnroll.Table table6 = new global::Reqnroll.Table(new string[] {
                             "Name",
                             "Color",
                             "Icon"});
-                table4.AddRow(new string[] {
+                table6.AddRow(new string[] {
                             "Yo",
                             "Verde",
                             "fast-food"});
 #line 31
-    await testRunner.WhenAsync("creo una categoría con los siguientes datos:", ((string)(null)), table4, "Cuando ");
+    await testRunner.WhenAsync("creo una categoría con los siguientes datos:", ((string)(null)), table6, "Cuando ");
 #line hidden
 #line 34
     await testRunner.ThenAsync("el sistema debe rechazar la creación con el mensaje \"El nombre debe tener al meno" +
@@ -301,16 +301,16 @@ namespace Finanzas.Test.Integration.Features
 #line 8
   await this.FeatureBackgroundAsync();
 #line hidden
-                global::Reqnroll.Table table5 = new global::Reqnroll.Table(new string[] {
+                global::Reqnroll.Table table7 = new global::Reqnroll.Table(new string[] {
                             "Name",
                             "Color",
                             "Icon"});
-                table5.AddRow(new string[] {
+                table7.AddRow(new string[] {
                             "Comida",
                             "Amarillo",
                             "fast-food"});
 #line 37
-    await testRunner.WhenAsync("creo una categoría con los siguientes datos:", ((string)(null)), table5, "Cuando ");
+    await testRunner.WhenAsync("creo una categoría con los siguientes datos:", ((string)(null)), table7, "Cuando ");
 #line hidden
 #line 40
     await testRunner.ThenAsync("el sistema debe rechazar la creación con el mensaje \"El color no pertenece a la p" +
@@ -345,27 +345,27 @@ namespace Finanzas.Test.Integration.Features
 #line 8
   await this.FeatureBackgroundAsync();
 #line hidden
-                global::Reqnroll.Table table6 = new global::Reqnroll.Table(new string[] {
+                global::Reqnroll.Table table8 = new global::Reqnroll.Table(new string[] {
                             "Name",
                             "Color",
                             "Icon"});
-                table6.AddRow(new string[] {
+                table8.AddRow(new string[] {
                             "Trasporte",
                             "Verde",
                             "fast-food"});
 #line 43
-    await testRunner.GivenAsync("que ya existe una categoría con los siguientes datos:", ((string)(null)), table6, "Dado ");
+    await testRunner.GivenAsync("que ya existe una categoría con los siguientes datos:", ((string)(null)), table8, "Dado ");
 #line hidden
-                global::Reqnroll.Table table7 = new global::Reqnroll.Table(new string[] {
+                global::Reqnroll.Table table9 = new global::Reqnroll.Table(new string[] {
                             "Name",
                             "Color",
                             "Icon"});
-                table7.AddRow(new string[] {
+                table9.AddRow(new string[] {
                             "Trasporte",
                             "Gris",
                             "fast-food"});
 #line 46
-    await testRunner.WhenAsync("creo una categoría con los siguientes datos:", ((string)(null)), table7, "Cuando ");
+    await testRunner.WhenAsync("creo una categoría con los siguientes datos:", ((string)(null)), table9, "Cuando ");
 #line hidden
 #line 49
     await testRunner.ThenAsync("el sistema debe rechazar la creación con el mensaje \"Ya existe una categoría con " +
@@ -400,27 +400,27 @@ namespace Finanzas.Test.Integration.Features
 #line 8
   await this.FeatureBackgroundAsync();
 #line hidden
-                global::Reqnroll.Table table8 = new global::Reqnroll.Table(new string[] {
+                global::Reqnroll.Table table10 = new global::Reqnroll.Table(new string[] {
                             "Name",
                             "Color",
                             "Icon"});
-                table8.AddRow(new string[] {
+                table10.AddRow(new string[] {
                             "Salud",
                             "Verde",
                             "fast-food"});
 #line 52
-    await testRunner.GivenAsync("que ya existe una categoría con los siguientes datos:", ((string)(null)), table8, "Dado ");
+    await testRunner.GivenAsync("que ya existe una categoría con los siguientes datos:", ((string)(null)), table10, "Dado ");
 #line hidden
-                global::Reqnroll.Table table9 = new global::Reqnroll.Table(new string[] {
+                global::Reqnroll.Table table11 = new global::Reqnroll.Table(new string[] {
                             "Name",
                             "Color",
                             "Icon"});
-                table9.AddRow(new string[] {
+                table11.AddRow(new string[] {
                             "Salud",
                             "Azul",
                             "fast-food"});
 #line 55
-    await testRunner.WhenAsync("actualizo la categoría con los siguientes datos:", ((string)(null)), table9, "Cuando ");
+    await testRunner.WhenAsync("actualizo la categoría con los siguientes datos:", ((string)(null)), table11, "Cuando ");
 #line hidden
 #line 58
     await testRunner.ThenAsync("la categoría \"Salud\" debe tener el color \"Azul\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Entonces ");
